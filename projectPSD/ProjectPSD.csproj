@@ -155,9 +155,21 @@
     <Content Include="Web.config" />
   </ItemGroup>
   <ItemGroup>
+    <Compile Include="Controller\AccountController.cs" />
+    <Compile Include="Controller\CartController.cs" />
+    <Compile Include="Controller\PaymentController.cs" />
+    <Compile Include="Controller\ProductController.cs" />
+    <Compile Include="Controller\ProductTypeController.cs" />
+    <Compile Include="Controller\TransactionController.cs" />
     <Compile Include="Factory\ProductFactory.cs" />
     <Compile Include="Factory\ProductTypeFactory.cs" />
     <Compile Include="Factory\UserFactory.cs" />
+    <Compile Include="Handler\AccountHandler.cs" />
+    <Compile Include="Handler\CartHandler.cs" />
+    <Compile Include="Handler\PaymentHandler.cs" />
+    <Compile Include="Handler\ProductHandler.cs" />
+    <Compile Include="Handler\ProductTypeHandler.cs" />
+    <Compile Include="Handler\TransactionHandler.cs" />
     <Compile Include="Model\Carts.cs">
       <DependentUpon>DatabaseEnt.tt</DependentUpon>
     </Compile>
