@@ -11,6 +11,7 @@ namespace ProjectPSD.View
     {
         protected void Page_Load(object sender, EventArgs e)
         {
+            if (Session["name"] == null) { Response.Redirect("Login.aspx"); }
             labEmail.Text = (String)Session["email"];
             labName.Text = (String)Session["name"];
             labGender.Text = (String)Session["gender"];

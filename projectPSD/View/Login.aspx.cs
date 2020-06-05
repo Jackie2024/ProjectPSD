@@ -15,11 +15,10 @@ namespace ProjectPSD.View
         {
             if (!IsPostBack)
             {
-                HttpCookie cookie = Request.Cookies["cookie"];
-                if (cookie != null)
+                if (Request.Cookies["email"] != null && Request.Cookies["pass"] != null)
                 {
-                    txtEmail.Text = cookie["email"].ToString();
-                    txtPass.Text = cookie["pass"].ToString();
+                    txtEmail.Text = Request.Cookies["email"].Value;
+                    txtPass.Attributes["value"] = Request.Cookies["pass"].Value;
                 }
             }
         }
@@ -48,14 +47,6 @@ namespace ProjectPSD.View
             }
             else
             {
-                if (cheRemember.Checked)
-                {
-                    HttpCookie cookie = new HttpCookie("cookie");
-                    cookie["email"] = email;
-                    cookie["pass"] = pass;
-                    cookie.Expires.AddHours(12);
-                    Response.Cookies.Add(cookie);
-                }
                 Session["name"] = u.Name;
                 Session["roleId"] = u.RoleID;
                 Session["userId"] = u.ID;
@@ -73,6 +64,22 @@ namespace ProjectPSD.View
         protected void btnRegister_Click(object sender, EventArgs e)
         {
             Response.Redirect("Register.aspx");
+        }
+
+        protected void btnRememberMe(object sender, EventArgs e)
+        {
+            if (cheRemember.Checked == true)
+            {
+                Response.Cookies["email"].Expires = DateTime.Now.AddDays(30);
+                Response.Cookies["pass"].Expires = DateTime.Now.AddDays(30);
+            }
+            else
+            {
+                Response.Cookies["email"].Expires = DateTime.Now.AddDays(-1);
+                Response.Cookies["password"].Expires = DateTime.Now.AddDays(-1);
+            }
+            Response.Cookies["email"].Value = txtEmail.Text.Trim();
+            Response.Cookies["pass"].Value = txtPass.Text.Trim();
         }
     }
 }

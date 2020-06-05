@@ -11,15 +11,15 @@
         <div>
             Old Password
             <br />
-            <asp:TextBox ID="txtOldPassword" runat="server"></asp:TextBox>
+            <asp:TextBox ID="txtOldPassword" runat="server" TextMode="Password"></asp:TextBox>
             <br />
             New Password
             <br />
-            <asp:TextBox ID="txtNewPassword" runat="server"></asp:TextBox>
+            <asp:TextBox ID="txtNewPassword" runat="server" TextMode="Password"></asp:TextBox>
             <br />
             Confirm Password
             <br />
-            <asp:TextBox ID="txtConfirmPassword" runat="server"></asp:TextBox>
+            <asp:TextBox ID="txtConfirmPassword" runat="server" TextMode="Password"></asp:TextBox>
             <br />
             <asp:Label ID="labErr" runat="server" Text=""></asp:Label>
             <br />

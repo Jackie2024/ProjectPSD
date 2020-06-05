@@ -13,6 +13,7 @@ namespace ProjectPSD.View
     {
         protected void Page_Load(object sender, EventArgs e)
         {
+            if (Session["name"] == null) { Response.Redirect("Login.aspx"); }
             if (Session["roleId"].Equals(1))
             {
                 List<Object> listObject = ProductRepository.print();

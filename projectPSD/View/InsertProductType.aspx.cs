@@ -13,7 +13,9 @@ namespace ProjectPSD.View
     {
         protected void Page_Load(object sender, EventArgs e)
         {
-
+            int role = Int32.Parse(Session["roleId"].ToString());
+            if (Session["name"] == null) { Response.Redirect("Login.aspx"); }
+            else if (role == 2 || role == 3) { Response.Redirect("Home.aspx"); }
         }
         protected void btnInsertProductType_Click(object sender, EventArgs e)
         {

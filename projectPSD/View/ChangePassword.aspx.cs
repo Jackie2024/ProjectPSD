@@ -12,7 +12,7 @@ namespace ProjectPSD.View
     {
         protected void Page_Load(object sender, EventArgs e)
         {
-            
+            if (Session["name"] == null) { Response.Redirect("Login.aspx"); }
         }
 
         protected void btnChangePassword_Click(object sender, EventArgs e)

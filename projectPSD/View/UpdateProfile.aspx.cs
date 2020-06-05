@@ -13,6 +13,7 @@ namespace ProjectPSD.View
     {
         protected void Page_Load(object sender, EventArgs e)
         {
+            if (Session["name"] == null) { Response.Redirect("Login.aspx"); }
             txtEmail.Attributes.Add("placeholder", (String)Session["email"]);
             txtName.Attributes.Add("placeholder", (String)Session["name"]);
         }

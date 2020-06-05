@@ -13,9 +13,15 @@ namespace ProjectPSD.View
     {
         protected void Page_Load(object sender, EventArgs e)
         {
-            List<Users> listUsers = UserRepository.getUsers();
-            gridUser.DataSource = listUsers;
-            gridUser.DataBind();
+            int role = Int32.Parse(Session["roleId"].ToString());
+            if (Session["name"] == null) { Response.Redirect("Login.aspx"); }
+            else if (role == 2 || role == 3) { Response.Redirect("Home.aspx"); }
+            if (!Page.IsPostBack)
+            {
+                List<Users> listUsers = UserRepository.getUsers();
+                gridUser.DataSource = listUsers;
+                gridUser.DataBind();
+            }
         }
 
         protected void btnBack_Click(object sender, EventArgs e)

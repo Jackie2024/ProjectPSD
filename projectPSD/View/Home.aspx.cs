@@ -18,7 +18,8 @@ namespace ProjectPSD.View
             btnViewProductType.Visible = false;
             btnInsertProductType.Visible = false;
             btnLogout.Visible = false;
-            
+            btnViewCart.Visible = false;
+            btnTransactionHistory.Visible = false;
             if(Session["name"] == null)
             {
                 lblName.Text = "Welcome Guest";
@@ -37,6 +38,8 @@ namespace ProjectPSD.View
                 btnViewProductType.Visible = true;
                 btnInsertProductType.Visible = true;
                 btnLogout.Visible = true;
+                btnViewCart.Visible = true;
+                btnTransactionHistory.Visible = true;
             }
             else
             {
@@ -44,6 +47,9 @@ namespace ProjectPSD.View
                 btnLogin.Visible = false;
                 btnViewProfile.Visible = true;
                 btnLogout.Visible = true;
+                btnLogout.Visible = true;
+                btnViewCart.Visible = true;
+                btnTransactionHistory.Visible = true;
             }
         }
 
@@ -86,7 +92,21 @@ namespace ProjectPSD.View
         {
             Session["name"] = null;
             Response.Cookies["cookie"].Expires = DateTime.Now.AddDays(-1);
+            Response.Cookies.Clear();
+            Session.Clear();
+            Session.Abandon();
             Response.Redirect("Home.aspx");
         }
+
+        protected void btnViewCart_Click(object sender, EventArgs e)
+        {
+            Response.Redirect("ViewCart.aspx");
+        }
+
+        protected void btnTransactionHistory_Click(object sender, EventArgs e)
+        {
+            Response.Redirect("ViewTransactionHistory.aspx");
+        }
+
     }
 }

@@ -19,6 +19,10 @@
             <br />
             <asp:Button ID="btnViewProfile" runat="server" OnClick="btnViewProfile_Click" Text="View Profile" />
             <br />
+            <asp:Button ID="btnViewCart" runat="server" OnClick="btnViewCart_Click" Text="View Cart" />
+            <br />
+            <asp:Button ID="btnTransactionHistory" runat="server" OnClick="btnTransactionHistory_Click" Text="Transaction History" />
+            <br />
             <asp:Button ID="btnViewUser" runat="server" OnClick="btnViewUser_Click" Text="View User" />
             <br />
             <asp:Button ID="btnInsertProduct" runat="server" OnClick="btnInsertProduct_Click" Text="Insert Product" />
