@@ -13,11 +13,12 @@ namespace ProjectPSD.View
     {
         protected void Page_Load(object sender, EventArgs e)
         {
+
             if (Session["name"] == null) { Response.Redirect("Login.aspx"); }
             if (Session["roleId"].Equals(1))
             {
-                List<Object> listObject = ProductRepository.print();
-                gridProduct.DataSource = listObject;
+               
+                gridProduct.DataSource = ProductRepository.print();
                 gridProduct.DataBind();
             }
             else
@@ -28,8 +29,7 @@ namespace ProjectPSD.View
                 btnUpdateProduct.Visible = false;
                 btnDeleteProduct.Visible = false;
 
-                List<Object> listObject = ProductRepository.printForMember();
-                gridProduct.DataSource = listObject;
+                gridProduct.DataSource = ProductRepository.printForMember();
                 gridProduct.DataBind();
             }
         }
@@ -87,6 +87,18 @@ namespace ProjectPSD.View
                 }
                 labErr.Text = "Product ID must be exist";
             }
+        }
+
+        protected void lbRedirect_Click (object sender, EventArgs e)
+        {
+            /*int id = Int32.Parse((sender as LinkButton).CommandArgument);
+            Response.Redirect("ViewCart.aspx?id=" + id);*/
+            Response.Redirect("Home.aspx");
+        }
+
+        protected void gridProduct_RowDataBound(object sender, GridViewRowEventArgs e)
+        {
+           
         }
     }
 }

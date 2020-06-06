@@ -12,6 +12,7 @@ namespace ProjectPSD.View
         protected void Page_Load(object sender, EventArgs e)
         {
             if (Session["name"] == null) { Response.Redirect("Login.aspx"); }
+            int id = Int32.Parse(Request.QueryString["id"]);
         }
     }
 }

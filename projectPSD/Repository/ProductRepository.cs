@@ -11,32 +11,32 @@ namespace ProjectPSD.Repository
     {
         private static DatabaseEnt db = new DatabaseEnt();
 
-        public static List<Object> print()
+        public static dynamic print()
         {
-            List<Object> list = db.Products.Select(i => new
-            {
-                ProductID = i.ID,
-                ProductName = i.Name,
-                ProductStock = i.Stock,
-                ProductTypeName = i.ProductTypes.Name,
-                ProductPrice = i.Price
-            }).ToList<Object>();
-
-            return list;
+            
+            return (from p in db.Products
+                    select new
+                    {
+                        p.ID,
+                        p.Name,
+                        p.Stock,
+                        ProductType = p.ProductTypes.Name,
+                        p.Price
+                    }).ToList();
+           
         }
 
-        public static List<Object> printForMember()
+        public static dynamic printForMember()
         {
-            List<Object> list = db.Products.Select(i => new
-            {
-                ProductID = i.ID,
-                ProductName = i.Name,
-                ProductStock = i.Stock,
-                ProductTypeName = i.ProductTypes.Name,
-                ProductPrice = i.Price
-            }).OrderBy(i => Guid.NewGuid()).Take(5).ToList<Object>();
-
-            return list;
+            return (from p in db.Products
+                    select new
+                    {
+                        p.ID,
+                        p.Name,
+                        p.Stock,
+                        ProductType = p.ProductTypes.Name,
+                        p.Price
+                    }).OrderBy(y => Guid.NewGuid()).Take(5).ToList();
         }
 
         public static List<Products> getProducts()

@@ -8,8 +8,18 @@
 </head>
 <body>
     <form id="form1" runat="server">
+
+        <asp:GridView ID="gridProduct" runat="server" OnRowDataBound="gridProduct_RowDataBound" Height="249px" Width="286px">
+            <Columns>
+                <asp:TemplateField>
+                    <ItemTemplate>
+                        <asp:LinkButton OnClick="lbRedirect_Click" ID="lbRedirect" CommandArgument='<%# Eval("Id")%>' runat="server">Add to Cart</asp:LinkButton>
+                    </ItemTemplate>
+                </asp:TemplateField>
+            </Columns>
+        </asp:GridView>
+
     <div>
-        <asp:GridView ID="gridProduct" runat="server"></asp:GridView>
         <asp:Label ID="labPro" runat="server" Text="">Product ID:</asp:Label>
         <asp:TextBox ID="txtProductId" runat="server"></asp:TextBox>
         <asp:Label ID="labErr" runat="server" Text=""></asp:Label>
