@@ -72,3 +72,40 @@ D:\1\BUNIS\B.university\Semester 4\PSD\Lab\ProjectPSD\projectPSD\bin\Microsoft.C
 D:\1\BUNIS\B.university\Semester 4\PSD\Lab\ProjectPSD\projectPSD\obj\Debug\ProjectPSD.csprojResolveAssemblyReference.cache
 D:\1\BUNIS\B.university\Semester 4\PSD\Lab\ProjectPSD\projectPSD\obj\Debug\ProjectPSD.dll
 D:\1\BUNIS\B.university\Semester 4\PSD\Lab\ProjectPSD\projectPSD\obj\Debug\ProjectPSD.pdb
+D:\Mata kuliah\Semester 4\Pattern Software Design\Lab\Project\ProjectPSD\projectPSD\bin\ApplicationInsights.config
+D:\Mata kuliah\Semester 4\Pattern Software Design\Lab\Project\ProjectPSD\projectPSD\bin\roslyn\csc.exe
+D:\Mata kuliah\Semester 4\Pattern Software Design\Lab\Project\ProjectPSD\projectPSD\bin\roslyn\Microsoft.Build.Tasks.CodeAnalysis.dll
+D:\Mata kuliah\Semester 4\Pattern Software Design\Lab\Project\ProjectPSD\projectPSD\bin\roslyn\Microsoft.CodeAnalysis.CSharp.dll
+D:\Mata kuliah\Semester 4\Pattern Software Design\Lab\Project\ProjectPSD\projectPSD\bin\roslyn\Microsoft.CodeAnalysis.dll
+D:\Mata kuliah\Semester 4\Pattern Software Design\Lab\Project\ProjectPSD\projectPSD\bin\roslyn\Microsoft.CodeAnalysis.VisualBasic.dll
+D:\Mata kuliah\Semester 4\Pattern Software Design\Lab\Project\ProjectPSD\projectPSD\bin\roslyn\Microsoft.CSharp.Core.targets
+D:\Mata kuliah\Semester 4\Pattern Software Design\Lab\Project\ProjectPSD\projectPSD\bin\roslyn\Microsoft.VisualBasic.Core.targets
+D:\Mata kuliah\Semester 4\Pattern Software Design\Lab\Project\ProjectPSD\projectPSD\bin\roslyn\System.Collections.Immutable.dll
+D:\Mata kuliah\Semester 4\Pattern Software Design\Lab\Project\ProjectPSD\projectPSD\bin\roslyn\System.Reflection.Metadata.dll
+D:\Mata kuliah\Semester 4\Pattern Software Design\Lab\Project\ProjectPSD\projectPSD\bin\roslyn\vbc.exe
+D:\Mata kuliah\Semester 4\Pattern Software Design\Lab\Project\ProjectPSD\projectPSD\bin\roslyn\VBCSCompiler.exe
+D:\Mata kuliah\Semester 4\Pattern Software Design\Lab\Project\ProjectPSD\projectPSD\bin\roslyn\VBCSCompiler.exe.config
+D:\Mata kuliah\Semester 4\Pattern Software Design\Lab\Project\ProjectPSD\projectPSD\bin\ProjectPSD.dll.config
+D:\Mata kuliah\Semester 4\Pattern Software Design\Lab\Project\ProjectPSD\projectPSD\bin\ProjectPSD.dll
+D:\Mata kuliah\Semester 4\Pattern Software Design\Lab\Project\ProjectPSD\projectPSD\bin\ProjectPSD.pdb
+D:\Mata kuliah\Semester 4\Pattern Software Design\Lab\Project\ProjectPSD\projectPSD\bin\EntityFramework.dll
+D:\Mata kuliah\Semester 4\Pattern Software Design\Lab\Project\ProjectPSD\projectPSD\bin\EntityFramework.SqlServer.dll
+D:\Mata kuliah\Semester 4\Pattern Software Design\Lab\Project\ProjectPSD\projectPSD\bin\Microsoft.AI.Agent.Intercept.dll
+D:\Mata kuliah\Semester 4\Pattern Software Design\Lab\Project\ProjectPSD\projectPSD\bin\Microsoft.AI.DependencyCollector.dll
+D:\Mata kuliah\Semester 4\Pattern Software Design\Lab\Project\ProjectPSD\projectPSD\bin\Microsoft.AI.PerfCounterCollector.dll
+D:\Mata kuliah\Semester 4\Pattern Software Design\Lab\Project\ProjectPSD\projectPSD\bin\Microsoft.AI.ServerTelemetryChannel.dll
+D:\Mata kuliah\Semester 4\Pattern Software Design\Lab\Project\ProjectPSD\projectPSD\bin\Microsoft.AI.Web.dll
+D:\Mata kuliah\Semester 4\Pattern Software Design\Lab\Project\ProjectPSD\projectPSD\bin\Microsoft.AI.WindowsServer.dll
+D:\Mata kuliah\Semester 4\Pattern Software Design\Lab\Project\ProjectPSD\projectPSD\bin\Microsoft.ApplicationInsights.dll
+D:\Mata kuliah\Semester 4\Pattern Software Design\Lab\Project\ProjectPSD\projectPSD\bin\Microsoft.CodeDom.Providers.DotNetCompilerPlatform.dll
+D:\Mata kuliah\Semester 4\Pattern Software Design\Lab\Project\ProjectPSD\projectPSD\bin\EntityFramework.xml
+D:\Mata kuliah\Semester 4\Pattern Software Design\Lab\Project\ProjectPSD\projectPSD\bin\EntityFramework.SqlServer.xml
+D:\Mata kuliah\Semester 4\Pattern Software Design\Lab\Project\ProjectPSD\projectPSD\bin\Microsoft.AI.DependencyCollector.xml
+D:\Mata kuliah\Semester 4\Pattern Software Design\Lab\Project\ProjectPSD\projectPSD\bin\Microsoft.AI.ServerTelemetryChannel.xml
+D:\Mata kuliah\Semester 4\Pattern Software Design\Lab\Project\ProjectPSD\projectPSD\bin\Microsoft.AI.Web.xml
+D:\Mata kuliah\Semester 4\Pattern Software Design\Lab\Project\ProjectPSD\projectPSD\bin\Microsoft.AI.WindowsServer.xml
+D:\Mata kuliah\Semester 4\Pattern Software Design\Lab\Project\ProjectPSD\projectPSD\bin\Microsoft.ApplicationInsights.xml
+D:\Mata kuliah\Semester 4\Pattern Software Design\Lab\Project\ProjectPSD\projectPSD\bin\Microsoft.CodeDom.Providers.DotNetCompilerPlatform.xml
+D:\Mata kuliah\Semester 4\Pattern Software Design\Lab\Project\ProjectPSD\projectPSD\obj\Debug\ProjectPSD.csprojResolveAssemblyReference.cache
+D:\Mata kuliah\Semester 4\Pattern Software Design\Lab\Project\ProjectPSD\projectPSD\obj\Debug\ProjectPSD.dll
+D:\Mata kuliah\Semester 4\Pattern Software Design\Lab\Project\ProjectPSD\projectPSD\obj\Debug\ProjectPSD.pdb
