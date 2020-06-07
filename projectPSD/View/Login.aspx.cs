@@ -51,19 +51,6 @@ namespace ProjectPSD.View
         {
             Boolean isChecked = cheRemember.Checked;
             accountCtrl.toggleRemeberMe(isChecked, txtEmail.Text.Trim(), txtPass.Text.Trim());
-
-            //if (cheRemember.Checked == true)
-            //{
-            //    Response.Cookies["email"].Expires = DateTime.Now.AddDays(30);
-            //    Response.Cookies["pass"].Expires = DateTime.Now.AddDays(30);
-            //}
-            //else
-            //{
-            //    Response.Cookies["email"].Expires = DateTime.Now.AddDays(-1);
-            //    Response.Cookies["password"].Expires = DateTime.Now.AddDays(-1);
-            //}
-            //Response.Cookies["email"].Value = txtEmail.Text.Trim();
-            //Response.Cookies["pass"].Value = txtPass.Text.Trim();
         }
     }
 }
