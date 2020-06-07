@@ -109,3 +109,40 @@ D:\Mata kuliah\Semester 4\Pattern Software Design\Lab\Project\ProjectPSD\project
 D:\Mata kuliah\Semester 4\Pattern Software Design\Lab\Project\ProjectPSD\projectPSD\obj\Debug\ProjectPSD.csprojResolveAssemblyReference.cache
 D:\Mata kuliah\Semester 4\Pattern Software Design\Lab\Project\ProjectPSD\projectPSD\obj\Debug\ProjectPSD.dll
 D:\Mata kuliah\Semester 4\Pattern Software Design\Lab\Project\ProjectPSD\projectPSD\obj\Debug\ProjectPSD.pdb
+C:\Users\Akmal Wiraprana\ProjectPSD\projectPSD\bin\ApplicationInsights.config
+C:\Users\Akmal Wiraprana\ProjectPSD\projectPSD\bin\roslyn\csc.exe
+C:\Users\Akmal Wiraprana\ProjectPSD\projectPSD\bin\roslyn\Microsoft.Build.Tasks.CodeAnalysis.dll
+C:\Users\Akmal Wiraprana\ProjectPSD\projectPSD\bin\roslyn\Microsoft.CodeAnalysis.CSharp.dll
+C:\Users\Akmal Wiraprana\ProjectPSD\projectPSD\bin\roslyn\Microsoft.CodeAnalysis.dll
+C:\Users\Akmal Wiraprana\ProjectPSD\projectPSD\bin\roslyn\Microsoft.CodeAnalysis.VisualBasic.dll
+C:\Users\Akmal Wiraprana\ProjectPSD\projectPSD\bin\roslyn\Microsoft.CSharp.Core.targets
+C:\Users\Akmal Wiraprana\ProjectPSD\projectPSD\bin\roslyn\Microsoft.VisualBasic.Core.targets
+C:\Users\Akmal Wiraprana\ProjectPSD\projectPSD\bin\roslyn\System.Collections.Immutable.dll
+C:\Users\Akmal Wiraprana\ProjectPSD\projectPSD\bin\roslyn\System.Reflection.Metadata.dll
+C:\Users\Akmal Wiraprana\ProjectPSD\projectPSD\bin\roslyn\vbc.exe
+C:\Users\Akmal Wiraprana\ProjectPSD\projectPSD\bin\roslyn\VBCSCompiler.exe
+C:\Users\Akmal Wiraprana\ProjectPSD\projectPSD\bin\roslyn\VBCSCompiler.exe.config
+C:\Users\Akmal Wiraprana\ProjectPSD\projectPSD\bin\ProjectPSD.dll.config
+C:\Users\Akmal Wiraprana\ProjectPSD\projectPSD\bin\ProjectPSD.dll
+C:\Users\Akmal Wiraprana\ProjectPSD\projectPSD\bin\ProjectPSD.pdb
+C:\Users\Akmal Wiraprana\ProjectPSD\projectPSD\bin\EntityFramework.dll
+C:\Users\Akmal Wiraprana\ProjectPSD\projectPSD\bin\EntityFramework.SqlServer.dll
+C:\Users\Akmal Wiraprana\ProjectPSD\projectPSD\bin\Microsoft.AI.Agent.Intercept.dll
+C:\Users\Akmal Wiraprana\ProjectPSD\projectPSD\bin\Microsoft.AI.DependencyCollector.dll
+C:\Users\Akmal Wiraprana\ProjectPSD\projectPSD\bin\Microsoft.AI.PerfCounterCollector.dll
+C:\Users\Akmal Wiraprana\ProjectPSD\projectPSD\bin\Microsoft.AI.ServerTelemetryChannel.dll
+C:\Users\Akmal Wiraprana\ProjectPSD\projectPSD\bin\Microsoft.AI.Web.dll
+C:\Users\Akmal Wiraprana\ProjectPSD\projectPSD\bin\Microsoft.AI.WindowsServer.dll
+C:\Users\Akmal Wiraprana\ProjectPSD\projectPSD\bin\Microsoft.ApplicationInsights.dll
+C:\Users\Akmal Wiraprana\ProjectPSD\projectPSD\bin\Microsoft.CodeDom.Providers.DotNetCompilerPlatform.dll
+C:\Users\Akmal Wiraprana\ProjectPSD\projectPSD\bin\EntityFramework.xml
+C:\Users\Akmal Wiraprana\ProjectPSD\projectPSD\bin\EntityFramework.SqlServer.xml
+C:\Users\Akmal Wiraprana\ProjectPSD\projectPSD\bin\Microsoft.AI.DependencyCollector.xml
+C:\Users\Akmal Wiraprana\ProjectPSD\projectPSD\bin\Microsoft.AI.ServerTelemetryChannel.xml
+C:\Users\Akmal Wiraprana\ProjectPSD\projectPSD\bin\Microsoft.AI.Web.xml
+C:\Users\Akmal Wiraprana\ProjectPSD\projectPSD\bin\Microsoft.AI.WindowsServer.xml
+C:\Users\Akmal Wiraprana\ProjectPSD\projectPSD\bin\Microsoft.ApplicationInsights.xml
+C:\Users\Akmal Wiraprana\ProjectPSD\projectPSD\bin\Microsoft.CodeDom.Providers.DotNetCompilerPlatform.xml
+C:\Users\Akmal Wiraprana\ProjectPSD\projectPSD\obj\Debug\ProjectPSD.csprojResolveAssemblyReference.cache
+C:\Users\Akmal Wiraprana\ProjectPSD\projectPSD\obj\Debug\ProjectPSD.dll
+C:\Users\Akmal Wiraprana\ProjectPSD\projectPSD\obj\Debug\ProjectPSD.pdb

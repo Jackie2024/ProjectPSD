@@ -146,6 +146,7 @@
     <Content Include="View\InsertProductType.aspx" />
     <Content Include="View\Login.aspx" />
     <Content Include="View\Register.aspx" />
+    <Content Include="View\UpdateCart.aspx" />
     <Content Include="View\UpdateProduct.aspx" />
     <Content Include="View\UpdateProductType.aspx" />
     <Content Include="View\UpdateProfile.aspx" />
@@ -266,6 +267,13 @@
     </Compile>
     <Compile Include="View\Register.aspx.designer.cs">
       <DependentUpon>Register.aspx</DependentUpon>
+    </Compile>
+    <Compile Include="View\UpdateCart.aspx.cs">
+      <DependentUpon>UpdateCart.aspx</DependentUpon>
+      <SubType>ASPXCodeBehind</SubType>
+    </Compile>
+    <Compile Include="View\UpdateCart.aspx.designer.cs">
+      <DependentUpon>UpdateCart.aspx</DependentUpon>
     </Compile>
     <Compile Include="View\UpdateProduct.aspx.cs">
       <DependentUpon>UpdateProduct.aspx</DependentUpon>
