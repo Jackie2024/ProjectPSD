@@ -1,4 +1,5 @@
-﻿using ProjectPSD.Model;
+﻿using ProjectPSD.Controller;
+using ProjectPSD.Model;
 using ProjectPSD.Repository;
 using System;
 using System.Collections.Generic;
@@ -11,6 +12,9 @@ namespace ProjectPSD.View
 {
     public partial class Login : System.Web.UI.Page
     {
+
+        private AccountController accountCtrl = new AccountController();
+
         protected void Page_Load(object sender, EventArgs e)
         {
             if (!IsPostBack)
@@ -19,6 +23,7 @@ namespace ProjectPSD.View
                 {
                     txtEmail.Text = Request.Cookies["email"].Value;
                     txtPass.Attributes["value"] = Request.Cookies["pass"].Value;
+                    cheRemember.Checked = true;
                 }
             }
         }
@@ -27,33 +32,9 @@ namespace ProjectPSD.View
         {
             String email = txtEmail.Text;
             String pass = txtPass.Text;
-            Users u = UserRepository.getLogin(email, pass);
+            String errMsg = accountCtrl.loginAttempt(email, pass);
 
-            if (email == "")
-            {
-                labErr.Text = "Email must be filled";
-            }
-            else if (pass == "")
-            {
-                labErr.Text = "Password must be filled";
-            }
-            else if (u == null)
-            {
-                labErr.Text = "User not found";
-            }
-            else if (u.Status == "Blocked")
-            {
-                labErr.Text = "User has been blocked";
-            }
-            else
-            {
-                Session["name"] = u.Name;
-                Session["roleId"] = u.RoleID;
-                Session["userId"] = u.ID;
-                Session["email"] = u.Email;
-                Session["gender"] = u.Gender;
-                Response.Redirect("Home.aspx");
-            }
+            if (errMsg != null) labErr.Text = errMsg;
         }
 
         protected void btnBack_Click(object sender, EventArgs e)
@@ -68,18 +49,21 @@ namespace ProjectPSD.View
 
         protected void btnRememberMe(object sender, EventArgs e)
         {
-            if (cheRemember.Checked == true)
-            {
-                Response.Cookies["email"].Expires = DateTime.Now.AddDays(30);
-                Response.Cookies["pass"].Expires = DateTime.Now.AddDays(30);
-            }
-            else
-            {
-                Response.Cookies["email"].Expires = DateTime.Now.AddDays(-1);
-                Response.Cookies["password"].Expires = DateTime.Now.AddDays(-1);
-            }
-            Response.Cookies["email"].Value = txtEmail.Text.Trim();
-            Response.Cookies["pass"].Value = txtPass.Text.Trim();
+            Boolean isChecked = cheRemember.Checked;
+            accountCtrl.toggleRemeberMe(isChecked, txtEmail.Text.Trim(), txtPass.Text.Trim());
+
+            //if (cheRemember.Checked == true)
+            //{
+            //    Response.Cookies["email"].Expires = DateTime.Now.AddDays(30);
+            //    Response.Cookies["pass"].Expires = DateTime.Now.AddDays(30);
+            //}
+            //else
+            //{
+            //    Response.Cookies["email"].Expires = DateTime.Now.AddDays(-1);
+            //    Response.Cookies["password"].Expires = DateTime.Now.AddDays(-1);
+            //}
+            //Response.Cookies["email"].Value = txtEmail.Text.Trim();
+            //Response.Cookies["pass"].Value = txtPass.Text.Trim();
         }
     }
 }

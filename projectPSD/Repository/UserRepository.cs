@@ -24,7 +24,7 @@ namespace ProjectPSD.Repository
                     select i).ToList();
         }
 
-        public static Users getLogin(String email, String pass)
+        public Users getLoginUser(String email, String pass)
         {
             Users targetUser = db.Users.Where(i => i.Email.Equals(email) && i.Password.Equals(pass)).FirstOrDefault();
             return (targetUser);
