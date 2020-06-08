@@ -11,7 +11,7 @@ namespace ProjectPSD.Repository
     {
         private static DatabaseEnt db = new DatabaseEnt();
 
-        public static dynamic print()
+        public dynamic print()
         {
             
             return (from p in db.Products
@@ -26,7 +26,7 @@ namespace ProjectPSD.Repository
            
         }
 
-        public static dynamic printForMember()
+        public dynamic printForMember()
         {
             return (from p in db.Products
                     select new
@@ -39,13 +39,13 @@ namespace ProjectPSD.Repository
                     }).OrderBy(y => Guid.NewGuid()).Take(5).ToList();
         }
 
-        public static List<Products> getProducts()
+        public List<Products> getProducts()
         {
             return (from i in db.Products
                     select i).ToList();
         }
 
-        public static void delProducts(int targetId)
+        public void delProducts(int targetId)
         {
             Products p = (from i in db.Products
                           where i.ID == targetId
@@ -55,7 +55,7 @@ namespace ProjectPSD.Repository
             db.SaveChanges();
         }
 
-        public static void updateProducts(int id, String name, int stock, int price)
+        public void updateProducts(int id, String name, int stock, int price)
         {
             Products p = (from i in db.Products
                           where i.ID == id
@@ -66,7 +66,7 @@ namespace ProjectPSD.Repository
             db.SaveChanges();
         }
 
-        public static void insertProducts(String name, int stock, int price)
+        public void insertProducts(String name, int stock, int price)
         {
             Products p = ProductFactory.createProduct(name, stock, price);
 
@@ -74,14 +74,14 @@ namespace ProjectPSD.Repository
             db.SaveChanges();
         }
 
-        public static void DecreaseStock(int id, int quantity)
+        public static void decreaseStock(int id, int quantity)
         {
             Products product = db.Products.Where(x => x.ID == id).FirstOrDefault();
             product.Stock -= quantity;
             db.SaveChanges();
         }
 
-        public static Products getProductById(int id)
+        public Products getProductById(int id)
         {
             Products p = db.Products.Where(x => x.ID == id).FirstOrDefault();
             return p;

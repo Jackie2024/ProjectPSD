@@ -12,6 +12,7 @@
             Product ID:
             <asp:Label ID="labProductId" runat="server" Text=""></asp:Label>
             <br />
+            <br />
             Name
             <br />
             <asp:TextBox ID="txtName" runat="server"></asp:TextBox>

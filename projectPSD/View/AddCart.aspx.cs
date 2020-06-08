@@ -11,12 +11,13 @@ namespace ProjectPSD.View
 {
     public partial class AddCart : System.Web.UI.Page
     {
+        private ProductController productCtrl = new ProductController();
         protected void Page_Load(object sender, EventArgs e)
         {
             if (Session["name"] == null) { Response.Redirect("Login.aspx"); }
             int id = Int32.Parse(Request.QueryString["id"]);
 
-            Products p = ProductController.getProductById(id);
+            Products p = productCtrl.getProductById(id);
             ProductName.Text = p.Name;
             ProductPrice.Text = p.Price.ToString();
             ProductStock.Text = p.Stock.ToString();
@@ -28,7 +29,7 @@ namespace ProjectPSD.View
             int id = Int32.Parse(Request.QueryString["id"]);
             int stock = toInt(BoxStock.Text);
             int myInt;
-            Products p = ProductController.getProductById(id);
+            Products p = productCtrl.getProductById(id);
 
             string stockString = BoxStock.Text;
             bool isNumerical = int.TryParse(stockString, out myInt);
