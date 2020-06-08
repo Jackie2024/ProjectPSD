@@ -8,16 +8,16 @@ namespace ProjectPSD.Factory
 {
     public class UserFactory
     {
-        public static Users createUser(int roleId, String name, String email, String password, String gender, String status)
+        public static Users createUser(Dictionary<String, String> registerInputs)
         {
             return new Users()
             {
-                RoleID = roleId,
-                Name = name,
-                Email = email,
-                Password = password,
-                Gender = gender,
-                Status = status
+                RoleID = 2,
+                Name = registerInputs["name"],
+                Email = registerInputs["email"],
+                Password = registerInputs["password"],
+                Gender = registerInputs["gender"],
+                Status = "Active"
             };
         }
     }

@@ -1,4 +1,5 @@
-﻿using ProjectPSD.Model;
+﻿using ProjectPSD.Controller;
+using ProjectPSD.Model;
 using ProjectPSD.Repository;
 using System;
 using System.Collections.Generic;
@@ -11,6 +12,8 @@ namespace ProjectPSD.View
 {
     public partial class UpdateProfile : System.Web.UI.Page
     {
+        private AccountController accountCtrl = new AccountController();
+
         protected void Page_Load(object sender, EventArgs e)
         {
             if (Session["name"] == null) { Response.Redirect("Login.aspx"); }
@@ -20,39 +23,27 @@ namespace ProjectPSD.View
 
         protected void btnUpdateProfile_Click(object sender, EventArgs e)
         {
-            String email = txtEmail.Text;
-            String name = txtName.Text;
-            String gender = radGender.Text;
-            List<Users> listUsers = UserRepository.getUsers();
+            Dictionary<String, String> updateInputs = extractUpdateInput();
+            String errMsg = accountCtrl.updateUserProfile((int)Session["userId"] ,updateInputs);
 
-            if (email == "")
+            if (errMsg != null)
             {
-                labErr.Text = "Email must be filled";
-            }
-            else if (name == "")
-            {
-                labErr.Text = "Name must be filled";
-            }
-            else if (gender == "")
-            {
-                labErr.Text = "Gender must be chosen";
+                labErr.Text = errMsg;
             }
             else
             {
-                foreach (Users i in listUsers)
-                {
-                    if (i.Email.Equals(email))
-                    {
-                        labErr.Text = "Email must be unique";
-                        return;
-                    }
-                }
-                UserRepository.updateUsers((int)Session["userId"], email, name, gender);
-                Session["email"] = email;
-                Session["name"] = name;                
-                Session["gender"] = gender;
                 Response.Redirect("ViewProfile.aspx");
             }
+        }
+
+        private Dictionary<String, String> extractUpdateInput()
+        {
+            Dictionary<string, string> updateInputs = new Dictionary<string, string>();
+            updateInputs.Add("email", txtEmail.Text);
+            updateInputs.Add("name", txtName.Text);
+            updateInputs.Add("gender", radGender.Text);
+
+            return updateInputs;
         }
 
         protected void btnBack_Click(object sender, EventArgs e)

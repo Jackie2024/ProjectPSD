@@ -10,11 +10,10 @@ namespace ProjectPSD.Repository
     public class UserRepository
     {
         private static DatabaseEnt db = new DatabaseEnt();
-        public static void registUser(int roleId, String name, String email, String password, String gender, String status)
-        {
-            Users u = UserFactory.createUser(roleId, name, email, password, gender, status);
 
-            db.Users.Add(u);
+        public static void insertNewUser(Users user)
+        {
+            db.Users.Add(user);
             db.SaveChanges();
         }
 
@@ -76,27 +75,27 @@ namespace ProjectPSD.Repository
             }
         }
 
-        public static void updateUsers(int id, String email, String name, String gender)
+        public static void updateUsers(int id, Dictionary<String, String> updateInputs)
         {
             Users u = (from i in db.Users
                           where i.ID == id
                           select i).FirstOrDefault();
-            u.Email = email;
-            u.Name = name;
-            u.Gender = gender;
+            u.Email = updateInputs["email"];
+            u.Name = updateInputs["name"];
+            u.Gender = updateInputs["gender"];
             db.SaveChanges();
         }
 
-        public static void updatePass(int id, String pass)
+        public static void updatePass(int id, String newPassword)
         {
             Users u = (from i in db.Users
                        where i.ID == id
                        select i).FirstOrDefault();
-            u.Password = pass;
+            u.Password = newPassword;
             db.SaveChanges();
         }
 
-        public static String getPassById(int id)
+        public String getPassById(int id)
         {
             Users targetUser = db.Users.Where(i => i.ID.Equals(id)).FirstOrDefault();
             String tempPass = targetUser.Password;

@@ -1,4 +1,5 @@
-﻿using ProjectPSD.Repository;
+﻿using ProjectPSD.Controller;
+using ProjectPSD.Repository;
 using System;
 using System.Collections.Generic;
 using System.Linq;
@@ -10,6 +11,8 @@ namespace ProjectPSD.View
 {
     public partial class ChangePassword : System.Web.UI.Page
     {
+        private AccountController accountCtrl = new AccountController();
+
         protected void Page_Load(object sender, EventArgs e)
         {
             if (Session["name"] == null) { Response.Redirect("Login.aspx"); }
@@ -17,28 +20,28 @@ namespace ProjectPSD.View
 
         protected void btnChangePassword_Click(object sender, EventArgs e)
         {
-            String oldPass = txtOldPassword.Text;
-            String newPass = txtNewPassword.Text;
-            String confPass = txtConfirmPassword.Text;
-            String currPass = UserRepository.getPassById((int)Session["userId"]);
-            
-            if(oldPass != currPass)
+            Dictionary<String, String> changePassInputs = extractChangePassInput((int)Session["userId"]);
+            String errMsg = accountCtrl.changeUserPassword((int)Session["userId"], changePassInputs);
+
+            if(errMsg != null)
             {
-                labErr.Text = "Old password must match with the password in database";
-            }
-            else if (newPass.Length <= 5)
-            {
-                labErr.Text = "New password must be longer than 5 characters";
-            }
-            else if (!newPass.Equals(confPass))
-            {
-                labErr.Text = "Confirm Password must be same with Password";
+                labErr.Text = errMsg;
             }
             else
             {
-                UserRepository.updatePass((int)Session["userId"], newPass);
                 Response.Redirect("ViewProfile.aspx");
             }
+        }
+
+        private Dictionary<String, String> extractChangePassInput(int userId)
+        {
+            Dictionary<string, string> changePassInputs = new Dictionary<string, string>();
+            changePassInputs.Add("oldPassword", txtOldPassword.Text);
+            changePassInputs.Add("newPassword", txtNewPassword.Text);
+            changePassInputs.Add("confPassword", txtConfirmPassword.Text);
+            changePassInputs.Add("currPassword", accountCtrl.getPassById(userId));
+
+            return changePassInputs;
         }
 
         protected void BtnBack_Click(object sender, EventArgs e)

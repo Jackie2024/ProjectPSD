@@ -1,4 +1,5 @@
-﻿using ProjectPSD.Model;
+﻿using ProjectPSD.Controller;
+using ProjectPSD.Model;
 using ProjectPSD.Repository;
 using System;
 using System.Collections.Generic;
@@ -11,16 +12,33 @@ namespace ProjectPSD.View
 {
     public partial class ViewUser : System.Web.UI.Page
     {
+        private AccountController accountCtrl = new AccountController();
+
         protected void Page_Load(object sender, EventArgs e)
         {
-            int role = Int32.Parse(Session["roleId"].ToString());
-            if (Session["name"] == null) { Response.Redirect("Login.aspx"); }
-            else if (role == 2 || role == 3) { Response.Redirect("Home.aspx"); }
-            if (!Page.IsPostBack)
+            if (Session["name"] == null)
             {
-                List<Users> listUsers = UserRepository.getUsers();
-                gridUser.DataSource = listUsers;
-                gridUser.DataBind();
+                Response.Redirect("Login.aspx");
+            }
+            else
+            {
+                int role = Int32.Parse(Session["roleId"].ToString());
+
+                if (Session["name"] == null)
+                {
+                    Response.Redirect("Login.aspx");
+                }
+                else if (role == 2 || role == 3)
+                {
+                    Response.Redirect("Home.aspx");
+                }
+
+                if (!Page.IsPostBack)
+                {
+                    List<Users> listUsers = accountCtrl.getUsers();
+                    gridUser.DataSource = listUsers;
+                    gridUser.DataBind();
+                }
             }
         }
 
@@ -32,22 +50,15 @@ namespace ProjectPSD.View
         protected void btnToggleRole_Click(object sender, EventArgs e)
         {
             int userId = toInt(txtUserId.Text);
+            String errMsg = accountCtrl.toggleUserRole(userId, (int)Session["userId"]);
 
-            if (userId.Equals(0))
+            if(errMsg != null)
             {
-                labErr.Text = "User ID must be filled";
+                labErr.Text = errMsg;
             }
             else
             {
-                if (userId.Equals(Session["userId"]))
-                {
-                    labErr.Text = "Cannot change your own data";
-                }
-                else
-                {
-                    UserRepository.toggleRole(userId);
-                    Response.Redirect("ViewUser.aspx");
-                }
+                Response.Redirect("ViewUser.aspx");
             }
         }
 
@@ -55,22 +66,33 @@ namespace ProjectPSD.View
         {
             int userId = toInt(txtUserId.Text);
 
-            if (userId.Equals(0))
+            String errMsg = accountCtrl.toggleUserStatus(userId, (int)Session["userId"]);
+
+            if (errMsg != null)
             {
-                labErr.Text = "User ID must be filled";
+                labErr.Text = errMsg;
             }
             else
             {
-                if (userId.Equals(Session["userId"]))
-                {
-                    labErr.Text = "Cannot change your own data";
-                }
-                else
-                {
-                    UserRepository.toggleStatus(userId);
-                    Response.Redirect("ViewUser.aspx");
-                }
+                Response.Redirect("ViewUser.aspx");
             }
+
+            //if (userId.Equals(0))
+            //{
+            //    labErr.Text = "User ID must be filled";
+            //}
+            //else
+            //{
+            //    if (userId.Equals(Session["userId"]))
+            //    {
+            //        labErr.Text = "Cannot change your own data";
+            //    }
+            //    else
+            //    {
+            //        UserRepository.toggleStatus(userId);
+            //        Response.Redirect("ViewUser.aspx");
+            //    }
+            //}
         }
 
         protected int toInt(String s)

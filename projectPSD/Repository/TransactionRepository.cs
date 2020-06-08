@@ -47,5 +47,54 @@ namespace ProjectPSD.Repository
         {
             return db.HeaderTransactions.Where(htr => htr.ID == transactionId).First();
         }
+
+        public static HeaderTransactions InsertHeaderTransaction(HeaderTransactions headerTransaction)
+        {
+            using (DatabaseEnt db = new DatabaseEnt())
+            {
+                db.HeaderTransactions.Add(headerTransaction);
+                db.SaveChanges();
+
+                return headerTransaction;
+            }
+        }
+
+        public static DetailTransactions InsertDetailTransaction(DetailTransactions detailTransaction)
+        {
+            DatabaseEnt db = new DatabaseEnt();
+            db.DetailTransactions.Add(detailTransaction);
+            db.SaveChanges();
+
+            int productId = detailTransaction.ProductID;
+            int quantity = detailTransaction.Quantity;
+            ProductRepository.DecreaseStock(productId, quantity);
+
+            return detailTransaction;
+        }
+
+        public static List<HeaderTransactions> FindByUsername(int ID)
+        {
+            using (DatabaseEnt db = new DatabaseEnt())
+            {
+                db.Configuration.ProxyCreationEnabled = false;
+
+                return db.HeaderTransactions.Where(x => x.ID == ID)
+                    .Select(x => x)
+                    .ToList();
+            }
+        }
+
+        public static List<DetailTransactions> FindDetailByTransactionId(int transactionId)
+        {
+            using (DatabaseEnt db = new DatabaseEnt())
+            {
+                db.Configuration.ProxyCreationEnabled = false;
+
+                return db.DetailTransactions.
+                    Where(x => x.TransactionID == transactionId)
+                    .Select(x => x)
+                    .ToList();
+            }
+        }
     }
 }

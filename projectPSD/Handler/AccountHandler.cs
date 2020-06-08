@@ -1,4 +1,5 @@
-﻿using ProjectPSD.Model;
+﻿using ProjectPSD.Factory;
+using ProjectPSD.Model;
 using ProjectPSD.Repository;
 using System;
 using System.Collections.Generic;
@@ -18,6 +19,16 @@ namespace ProjectPSD.Handler
             HttpContext.Current.Response.Cookies["pass"].Value = password;
         }
 
+        public void toggleUserRole(int userId)
+        {
+            UserRepository.toggleRole(userId);
+        }
+
+        public void toggleUserStatus(int userId)
+        {
+            UserRepository.toggleStatus(userId);
+        }
+
         public Users getLoginUser(String email, String password)
         {
             return userRepo.getLoginUser(email, password);
@@ -31,6 +42,35 @@ namespace ProjectPSD.Handler
             Session["email"] = u.Email;
             Session["gender"] = u.Gender;
             HttpContext.Current.Response.Redirect("Home.aspx");
+        }
+
+        public void createMember(Dictionary<String, String> registerInputs)
+        {
+            Users user = UserFactory.createUser(registerInputs);
+            UserRepository.insertNewUser(user);
+        }
+
+        public void updateUserProfile(int userId, Dictionary<String, String> updateInputs)
+        {
+            UserRepository.updateUsers(userId, updateInputs);
+            Session["email"] = updateInputs["email"];
+            Session["name"] = updateInputs["name"];
+            Session["gender"] = updateInputs["gender"];
+        }
+
+        public void updatePassword(int userId, String newPassword)
+        {
+            UserRepository.updatePass(userId, newPassword);
+        }
+
+        public String getPassById(int userId)
+        {
+            return userRepo.getPassById(userId);
+        }
+
+        public List<Users> getUsers()
+        {
+            return UserRepository.getUsers();
         }
     }
 }
