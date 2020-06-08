@@ -9,6 +9,11 @@ namespace ProjectPSD.Controller
 {
     public class TransactionController
     {
+        public static void CheckOut(int userId, List<Carts> carts)
+        {
+            TransactionHandler.Checkout(userId, carts);
+        }
+
         public static List<Object> getTransactionDetails(int transactionId)
         {
             return TransactionHandler.getTransactionDetails(transactionId);

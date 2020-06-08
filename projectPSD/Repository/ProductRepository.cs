@@ -73,5 +73,18 @@ namespace ProjectPSD.Repository
             db.Products.Add(p);
             db.SaveChanges();
         }
+
+        public static void DecreaseStock(int id, int quantity)
+        {
+            Products product = db.Products.Where(x => x.ID == id).FirstOrDefault();
+            product.Stock -= quantity;
+            db.SaveChanges();
+        }
+
+        public static Products getProductById(int id)
+        {
+            Products p = db.Products.Where(x => x.ID == id).FirstOrDefault();
+            return p;
+        }
     }
 }
