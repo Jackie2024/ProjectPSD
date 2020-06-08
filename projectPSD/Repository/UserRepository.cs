@@ -10,11 +10,10 @@ namespace ProjectPSD.Repository
     public class UserRepository
     {
         private static DatabaseEnt db = new DatabaseEnt();
-        public static void registUser(int roleId, String name, String email, String password, String gender, String status)
-        {
-            Users u = UserFactory.createUser(roleId, name, email, password, gender, status);
 
-            db.Users.Add(u);
+        public static void insertNewUser(Users user)
+        {
+            db.Users.Add(user);
             db.SaveChanges();
         }
 

@@ -1,4 +1,5 @@
-﻿using ProjectPSD.Model;
+﻿using ProjectPSD.Factory;
+using ProjectPSD.Model;
 using ProjectPSD.Repository;
 using System;
 using System.Collections.Generic;
@@ -31,6 +32,17 @@ namespace ProjectPSD.Handler
             Session["email"] = u.Email;
             Session["gender"] = u.Gender;
             HttpContext.Current.Response.Redirect("Home.aspx");
+        }
+
+        public List<Users> getUsers()
+        {
+            return UserRepository.getUsers();
+        }
+
+        public void createMember(Dictionary<String, String> registerInputs)
+        {
+            Users user = UserFactory.createUser(registerInputs);
+            UserRepository.insertNewUser(user);
         }
     }
 }

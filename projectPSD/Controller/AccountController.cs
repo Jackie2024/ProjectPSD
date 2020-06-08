@@ -29,7 +29,7 @@ namespace ProjectPSD.Controller
 
         public String loginAttempt(String email, String password)
         {
-            String errMsg = validateInput(email, password);
+            String errMsg = validateLoginInput(email, password);
 
             if(errMsg == null)
             {
@@ -45,7 +45,7 @@ namespace ProjectPSD.Controller
             return errMsg;
         }
 
-        private String validateInput(String email, String password)
+        private String validateLoginInput(String email, String password)
         {
             String errMsg = null;
             if (email == "")
@@ -70,6 +70,59 @@ namespace ProjectPSD.Controller
             else if (u.Status == "Blocked")
             {
                 errMsg = "User has been blocked";
+            }
+
+            return errMsg;
+        }
+
+        public String registerNewMember(Dictionary<String, String> registerInputs)
+        {
+            String errMsg = validateRegistration(registerInputs);
+            if (errMsg == null) accountHdlr.createMember(registerInputs);
+
+            return errMsg;
+        }
+
+        private String validateRegistration(Dictionary<String, String> registerInputs)
+        {
+            String errMsg = null;
+
+            if (registerInputs["email"] == "")
+            {
+                errMsg = "Email must be filled";
+            }
+            else if (registerInputs["name"] == "")
+            {
+                errMsg = "Name must be filled";
+            }
+            else if (registerInputs["password"] == "")
+            {
+                errMsg = "Password must be filled";
+            }
+            else if (!registerInputs["password"].Equals(registerInputs["confPassword"]))
+            {
+                errMsg = "Confirm Password must be same with Password";
+            }
+            else if (registerInputs["gender"] == "")
+            {
+                errMsg = "Gender must be chosen";
+            }
+
+            return errMsg ?? validateEmailUniqueness(registerInputs["email"]);
+        }
+
+        private String validateEmailUniqueness(String email)
+        {
+            List<Users> listUsers = accountHdlr.getUsers();
+            String errMsg = null;
+
+            foreach (Users i in listUsers)
+            {
+                if (i.Email.Equals(email))
+                {
+                    errMsg = "Email must be unique";
+                    break;
+                }
             }
 
             return errMsg;
