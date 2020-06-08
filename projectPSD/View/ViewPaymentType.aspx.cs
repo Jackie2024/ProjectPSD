@@ -1,5 +1,4 @@
-﻿using ProjectPSD.Model;
-using ProjectPSD.Repository;
+﻿using ProjectPSD.Controller;
 using System;
 using System.Collections.Generic;
 using System.Linq;
@@ -11,13 +10,13 @@ namespace ProjectPSD.View
 {
     public partial class ViewPaymentType : System.Web.UI.Page
     {
+        private PaymentController paymentCtrl = new PaymentController();
         protected void Page_Load(object sender, EventArgs e)
         {
             int role = Int32.Parse(Session["roleId"].ToString());
             if (Session["name"] == null) { Response.Redirect("Login.aspx"); }
             else if (role == 2 || role == 3) { Response.Redirect("Home.aspx"); }
-            List<PaymentTypes> listObject = PaymentTypeRepository.getPaymentTypes();
-            gridPayment.DataSource = listObject;
+            gridPayment.DataSource = paymentCtrl.getPaymentType();
             gridPayment.DataBind();
         }
 
@@ -34,46 +33,17 @@ namespace ProjectPSD.View
         protected void btnUpdatePaymentType_Click(object sender, EventArgs e)
         {
             String paymentTypeId = txtPaymentTypeId.Text;
-            List<PaymentTypes> listProducts = PaymentTypeRepository.getPaymentTypes();
+            String errMsg = paymentCtrl.gotoUpdateAttempt(paymentTypeId);
 
-            if (paymentTypeId == "")
-            {
-                labErr.Text = "Payment Type ID must be filled";
-            }
-            else
-            {
-                foreach (PaymentTypes i in listProducts)
-                {
-                    if (i.ID.Equals(int.Parse(txtPaymentTypeId.Text)))
-                    {
-                        Response.Redirect("UpdatePaymentType.aspx?id=" + paymentTypeId);
-                    }
-                }
-                labErr.Text = "Payment Type ID must be exist";
-            }
+            if (errMsg != null) labErr.Text = errMsg;
         }
         
         protected void btnDeletePaymentType_Click(object sender, EventArgs e)
         {
             String paymentTypeId = txtPaymentTypeId.Text;
-            List<PaymentTypes> listPayments = PaymentTypeRepository.getPaymentTypes();
+            String errMsg = paymentCtrl.deleteAttempt(paymentTypeId);
 
-            if (paymentTypeId == "")
-            {
-                labErr.Text = "Payment Type ID must be filled";
-            }
-            else
-            {
-                foreach (PaymentTypes i in listPayments)
-                {
-                    if (i.ID.Equals(int.Parse(txtPaymentTypeId.Text)))
-                    {
-                        PaymentTypeRepository.delPaymentTypes(i.ID);
-                        Response.Redirect("ViewPaymentType.aspx");
-                    }
-                }
-                labErr.Text = "Payment Type ID must be exist";
-            }
+            if (errMsg != null) labErr.Text = errMsg;
         }
     }
 }

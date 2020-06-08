@@ -9,6 +9,11 @@
 <body>
     <form id="form1" runat="server">
         <div>
+            Product Type: <asp:Label ID="labType" runat="server" Text=""></asp:Label>
+            <br />
+            Description: <asp:Label ID="labDesc" runat="server" Text=""></asp:Label>
+            <br />
+            <br />
             Product Type
             <br />
             <asp:TextBox ID="txtProductType" runat="server"></asp:TextBox>

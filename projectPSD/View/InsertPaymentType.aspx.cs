@@ -1,5 +1,4 @@
-﻿using ProjectPSD.Model;
-using ProjectPSD.Repository;
+﻿using ProjectPSD.Controller;
 using System;
 using System.Collections.Generic;
 using System.Linq;
@@ -11,6 +10,7 @@ namespace ProjectPSD.View
 {
     public partial class InsertPaymentType : System.Web.UI.Page
     {
+        private PaymentController paymentCtrl = new PaymentController();
         protected void Page_Load(object sender, EventArgs e)
         {
             int role = Int32.Parse(Session["roleId"].ToString());
@@ -20,29 +20,9 @@ namespace ProjectPSD.View
         protected void btnInsertPaymentType_Click(object sender, EventArgs e)
         {
             String paymentType = txtPaymentType.Text;
-            List<PaymentTypes> listPaymentTypes = PaymentTypeRepository.getPaymentTypes();
+            String errMsg = paymentCtrl.insertAttempt(paymentType);
 
-            if (paymentType == "")
-            {
-                labErr.Text = "Payment type must be filled";
-            }
-            else if (paymentType.Length < 3)
-            {
-                labErr.Text = "Payment type must consist of 3 characters or more";
-            }
-            else
-            {
-                foreach (PaymentTypes i in listPaymentTypes)
-                {
-                    if (i.Type.Equals(paymentType))
-                    {
-                        labErr.Text = "Payment type must be unique";
-                        return;
-                    }
-                }
-                PaymentTypeRepository.insertPaymentTypes(paymentType);
-                Response.Redirect("ViewPaymentType.aspx");
-            }
+            if (errMsg != null) labErr.Text = errMsg;
         }
 
         protected void btnBack_Click(object sender, EventArgs e)

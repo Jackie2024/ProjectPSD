@@ -1,5 +1,4 @@
-﻿using ProjectPSD.Model;
-using ProjectPSD.Repository;
+﻿using ProjectPSD.Controller;
 using System;
 using System.Collections.Generic;
 using System.Linq;
@@ -11,13 +10,13 @@ namespace ProjectPSD.View
 {
     public partial class ViewProductType : System.Web.UI.Page
     {
+        private ProductTypeController productTypeCtrl = new ProductTypeController();
         protected void Page_Load(object sender, EventArgs e)
         {
             int role = Int32.Parse(Session["roleId"].ToString());
             if (Session["name"] == null) { Response.Redirect("Login.aspx"); }
             else if (role == 2 || role == 3) { Response.Redirect("Home.aspx"); }
-            List<ProductTypes> listObject = ProductTypeRepository.getProductTypes();
-            gridProduct.DataSource = listObject;
+            gridProduct.DataSource = productTypeCtrl.getProductType();
             gridProduct.DataBind();
         }
 
@@ -34,46 +33,17 @@ namespace ProjectPSD.View
         protected void btnUpdateProductType_Click(object sender, EventArgs e)
         {
             String productTypeId = txtProductTypeId.Text;
-            List<ProductTypes> listProducts = ProductTypeRepository.getProductTypes();
+            String errMsg = productTypeCtrl.gotoUpdateAttempt(productTypeId);
 
-            if (productTypeId == "")
-            {
-                labErr.Text = "Product Type ID must be filled";
-            }
-            else
-            {
-                foreach (ProductTypes i in listProducts)
-                {
-                    if (i.ID.Equals(int.Parse(txtProductTypeId.Text)))
-                    {
-                        Response.Redirect("UpdateProductType.aspx?id=" + productTypeId);
-                    }
-                }
-                labErr.Text = "Product Type ID must be exist";
-            }
+            if (errMsg != null) labErr.Text = errMsg;
         }
 
         protected void btnDeleteProductType_Click(object sender, EventArgs e)
         {
             String productTypeId = txtProductTypeId.Text;
-            List<ProductTypes> listProducts = ProductTypeRepository.getProductTypes();
+            String errMsg = productTypeCtrl.deleteAttempt(productTypeId);
 
-            if (productTypeId == "")
-            {
-                labErr.Text = "Product Type ID must be filled";
-            }
-            else
-            {
-                foreach (ProductTypes i in listProducts)
-                {
-                    if (i.ID.Equals(int.Parse(txtProductTypeId.Text)))
-                    {
-                        ProductTypeRepository.delProductTypes(i.ID);
-                        Response.Redirect("ViewProductType.aspx");
-                    }
-                }
-                labErr.Text = "Product Type ID must be exist";
-            }
+            if (errMsg != null) labErr.Text = errMsg;
         }
     }
 }

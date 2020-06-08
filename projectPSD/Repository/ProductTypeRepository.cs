@@ -11,13 +11,29 @@ namespace ProjectPSD.Repository
     {
         private static DatabaseEnt db = new DatabaseEnt();
 
-        public static List<ProductTypes> getProductTypes()
+        public List<ProductTypes> getProductTypes()
         {
             return (from i in db.ProductTypes
                     select i).ToList();
         }
 
-        public static void delProductTypes(int targetId)
+        public String getProductTypebyId(int targetId)
+        {
+            ProductTypes p = (from i in db.ProductTypes
+                              where i.ID == targetId
+                              select i).FirstOrDefault();
+            return p.Name;
+        }
+
+        public String getDescbyId(int targetId)
+        {
+            ProductTypes p = (from i in db.ProductTypes
+                              where i.ID == targetId
+                              select i).FirstOrDefault();
+            return p.Description;
+        }
+
+        public void delProductTypes(int targetId)
         {
             ProductTypes p = (from i in db.ProductTypes
                           where i.ID == targetId
@@ -27,7 +43,7 @@ namespace ProjectPSD.Repository
             db.SaveChanges();
         }
 
-        public static void updateProductTypes(int targetId, String productType, String desc)
+        public void updateProductTypes(int targetId, String productType, String desc)
         {
             ProductTypes p = (from i in db.ProductTypes
                               where i.ID == targetId
@@ -37,7 +53,7 @@ namespace ProjectPSD.Repository
             db.SaveChanges();
         }
 
-        public static void insertProductTypes(String productType, String desc)
+        public void insertProductTypes(String productType, String desc)
         {
             ProductTypes p = ProductTypeFactory.createProductType(productType, desc);
 
