@@ -27,6 +27,22 @@ namespace ProjectPSD.Controller
             accountHdlr.toggleRememberMe(email, password);
         }
 
+        public String toggleUserRole(int userId, int currLoginUserId)
+        {
+            String errMsg = validateUserViewToggle(userId, currLoginUserId);
+            if (errMsg == null) accountHdlr.toggleUserRole(userId);
+
+            return errMsg;
+        }
+
+        public String toggleUserStatus(int userId, int currLoginUserId)
+        {
+            String errMsg = validateUserViewToggle(userId, currLoginUserId);
+            if (errMsg == null) accountHdlr.toggleUserStatus(userId);
+
+            return errMsg;
+        }
+
         public String loginAttempt(String email, String password)
         {
             String errMsg = validateLoginInput(email, password);
@@ -72,6 +88,11 @@ namespace ProjectPSD.Controller
         public String getPassById(int id)
         {
             return accountHdlr.getPassById(id);
+        }
+
+        public List<Users> getUsers()
+        {
+            return accountHdlr.getUsers();
         }
 
         private String validateLoginInput(String email, String password)
@@ -172,9 +193,28 @@ namespace ProjectPSD.Controller
             return errMsg;
         }
 
+        private String validateUserViewToggle(int userId, int currLoginUserId)
+        {
+            String errMsg = null;
+
+            if (userId.Equals(0))
+            {
+                errMsg = "User ID must be filled";
+            }
+            else
+            {
+                if (userId.Equals(currLoginUserId))
+                {
+                    errMsg = "Cannot change your own data";
+                }
+            }
+
+            return errMsg;
+        }
+
         private String validateEmailUniqueness(String email)
         {
-            List<Users> listUsers = accountHdlr.getUsers();
+            List<Users> listUsers = getUsers();
             String errMsg = null;
 
             foreach (Users i in listUsers)

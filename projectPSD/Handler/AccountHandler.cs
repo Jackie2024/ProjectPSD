@@ -19,6 +19,16 @@ namespace ProjectPSD.Handler
             HttpContext.Current.Response.Cookies["pass"].Value = password;
         }
 
+        public void toggleUserRole(int userId)
+        {
+            UserRepository.toggleRole(userId);
+        }
+
+        public void toggleUserStatus(int userId)
+        {
+            UserRepository.toggleStatus(userId);
+        }
+
         public Users getLoginUser(String email, String password)
         {
             return userRepo.getLoginUser(email, password);
