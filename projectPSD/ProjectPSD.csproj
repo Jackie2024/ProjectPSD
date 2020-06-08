@@ -168,9 +168,11 @@
     <Compile Include="Controller\ProductController.cs" />
     <Compile Include="Controller\ProductTypeController.cs" />
     <Compile Include="Controller\TransactionController.cs" />
+    <Compile Include="Factory\CartFactory.cs" />
     <Compile Include="Factory\PaymentTypeFactory.cs" />
     <Compile Include="Factory\ProductFactory.cs" />
     <Compile Include="Factory\ProductTypeFactory.cs" />
+    <Compile Include="Factory\TransactionFactory.cs" />
     <Compile Include="Factory\UserFactory.cs" />
     <Compile Include="Handler\AccountHandler.cs">
       <SubType>ASPXCodeBehind</SubType>

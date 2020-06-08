@@ -1,4 +1,5 @@
-﻿using ProjectPSD.Model;
+﻿using ProjectPSD.Factory;
+using ProjectPSD.Model;
 using ProjectPSD.Repository;
 using System;
 using System.Collections.Generic;
@@ -9,6 +10,18 @@ namespace ProjectPSD.Handler
 {
     public class TransactionHandler
     {
+        public static void Checkout(int userId, List<Carts> carts)
+        {
+            HeaderTransactions headerTransaction = TransactionFactory.CreateHeader(userId);
+            int headerTransactionId = TransactionRepository.InsertHeaderTransaction(headerTransaction).ID;
+
+            foreach (var item in carts)
+            {
+                DetailTransactions detailTransaction = TransactionFactory.CreateDetail(headerTransactionId, item);
+                TransactionRepository.InsertDetailTransaction(detailTransaction);
+            }
+        }
+
         public static List<Object> getCurrUserTransactions(int userId)
         {
             return TransactionRepository.getCurrUserTransactions(userId);

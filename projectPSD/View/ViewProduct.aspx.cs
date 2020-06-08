@@ -91,9 +91,8 @@ namespace ProjectPSD.View
 
         protected void lbRedirect_Click (object sender, EventArgs e)
         {
-            /*int id = Int32.Parse((sender as LinkButton).CommandArgument);
-            Response.Redirect("ViewCart.aspx?id=" + id);*/
-            Response.Redirect("Home.aspx");
+            int id = Int32.Parse((sender as LinkButton).CommandArgument);
+            Response.Redirect("AddCart.aspx?id=" + id);
         }
 
         protected void gridProduct_RowDataBound(object sender, GridViewRowEventArgs e)
