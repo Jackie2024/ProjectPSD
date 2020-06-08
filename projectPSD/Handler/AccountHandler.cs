@@ -34,11 +34,6 @@ namespace ProjectPSD.Handler
             HttpContext.Current.Response.Redirect("Home.aspx");
         }
 
-        public List<Users> getUsers()
-        {
-            return UserRepository.getUsers();
-        }
-
         public void createMember(Dictionary<String, String> registerInputs)
         {
             Users user = UserFactory.createUser(registerInputs);
@@ -51,6 +46,21 @@ namespace ProjectPSD.Handler
             Session["email"] = updateInputs["email"];
             Session["name"] = updateInputs["name"];
             Session["gender"] = updateInputs["gender"];
+        }
+
+        public void updatePassword(int userId, String newPassword)
+        {
+            UserRepository.updatePass(userId, newPassword);
+        }
+
+        public String getPassById(int userId)
+        {
+            return userRepo.getPassById(userId);
+        }
+
+        public List<Users> getUsers()
+        {
+            return UserRepository.getUsers();
         }
     }
 }

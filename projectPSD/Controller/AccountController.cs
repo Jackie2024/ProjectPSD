@@ -61,6 +61,19 @@ namespace ProjectPSD.Controller
             return errMsg;
         }
 
+        public String changeUserPassword(int userId, Dictionary<String, String> changePassInputs)
+        {
+            String errMsg = validateChangePassInput(changePassInputs);
+            if (errMsg == null) accountHdlr.updatePassword(userId, changePassInputs["newPassword"]);
+
+            return errMsg;
+        }
+
+        public String getPassById(int id)
+        {
+            return accountHdlr.getPassById(id);
+        }
+
         private String validateLoginInput(String email, String password)
         {
             String errMsg = null;
@@ -137,6 +150,26 @@ namespace ProjectPSD.Controller
             }
 
             return errMsg ?? validateEmailUniqueness(updateInputs["email"]);
+        }
+
+        private String validateChangePassInput(Dictionary<String, String> changePassInputs)
+        {
+            String errMsg = null;
+
+            if (changePassInputs["oldPassword"] != changePassInputs["currPassword"])
+            {
+                errMsg = "Old password must match with the password in database";
+            }
+            else if (changePassInputs["newPassword"].Length <= 5)
+            {
+                errMsg = "New password must be longer than 5 characters";
+            }
+            else if (!changePassInputs["newPassword"].Equals(changePassInputs["confPassword"]))
+            {
+                errMsg = "Confirm Password must be same with Password";
+            }
+
+            return errMsg;
         }
 
         private String validateEmailUniqueness(String email)

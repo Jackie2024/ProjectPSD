@@ -86,16 +86,16 @@ namespace ProjectPSD.Repository
             db.SaveChanges();
         }
 
-        public static void updatePass(int id, String pass)
+        public static void updatePass(int id, String newPassword)
         {
             Users u = (from i in db.Users
                        where i.ID == id
                        select i).FirstOrDefault();
-            u.Password = pass;
+            u.Password = newPassword;
             db.SaveChanges();
         }
 
-        public static String getPassById(int id)
+        public String getPassById(int id)
         {
             Users targetUser = db.Users.Where(i => i.ID.Equals(id)).FirstOrDefault();
             String tempPass = targetUser.Password;

@@ -23,7 +23,7 @@ namespace ProjectPSD.View
 
         protected void btnUpdateProfile_Click(object sender, EventArgs e)
         {
-            Dictionary<String, String> updateInputs = extractRegInput();
+            Dictionary<String, String> updateInputs = extractUpdateInput();
             String errMsg = accountCtrl.updateUserProfile((int)Session["userId"] ,updateInputs);
 
             if (errMsg != null)
@@ -36,14 +36,14 @@ namespace ProjectPSD.View
             }
         }
 
-        private Dictionary<String, String> extractRegInput()
+        private Dictionary<String, String> extractUpdateInput()
         {
-            Dictionary<string, string> registerInputs = new Dictionary<string, string>();
-            registerInputs.Add("email", txtEmail.Text);
-            registerInputs.Add("name", txtName.Text);
-            registerInputs.Add("gender", radGender.Text);
+            Dictionary<string, string> updateInputs = new Dictionary<string, string>();
+            updateInputs.Add("email", txtEmail.Text);
+            updateInputs.Add("name", txtName.Text);
+            updateInputs.Add("gender", radGender.Text);
 
-            return registerInputs;
+            return updateInputs;
         }
 
         protected void btnBack_Click(object sender, EventArgs e)
