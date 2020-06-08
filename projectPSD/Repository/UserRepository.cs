@@ -75,14 +75,14 @@ namespace ProjectPSD.Repository
             }
         }
 
-        public static void updateUsers(int id, String email, String name, String gender)
+        public static void updateUsers(int id, Dictionary<String, String> updateInputs)
         {
             Users u = (from i in db.Users
                           where i.ID == id
                           select i).FirstOrDefault();
-            u.Email = email;
-            u.Name = name;
-            u.Gender = gender;
+            u.Email = updateInputs["email"];
+            u.Name = updateInputs["name"];
+            u.Gender = updateInputs["gender"];
             db.SaveChanges();
         }
 

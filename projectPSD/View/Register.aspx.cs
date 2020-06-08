@@ -22,8 +22,6 @@ namespace ProjectPSD.View
         protected void btnRegister_Click(object sender, EventArgs e)
         {
             Dictionary<String, String> registerInputs = extractRegInput();
-            //System.Web.UI.ScriptManager.RegisterClientScriptBlock(this, this.GetType(), "alertMessage", "alert('" + "Register Jalan" + "')", true);
-
             String errMsg = accountCtrl.registerNewMember(registerInputs);
 
             if (errMsg != null)
@@ -34,39 +32,6 @@ namespace ProjectPSD.View
             {
                 Response.Redirect("Login.aspx");
             };
-
-            //List<Users> listUsers = UserRepository.getUsers();
-
-            //if (email == ""){
-            //    labErr.Text = "Email must be filled";
-            //}
-            //else if (name == ""){
-            //    labErr.Text = "Name must be filled";
-            //}
-            //else if (pass == ""){
-            //    labErr.Text = "Password must be filled";
-            //}
-            //else if (!pass.Equals(confPass))
-            //{
-            //    labErr.Text = "Confirm Password must be same with Password";
-            //}
-            //else if (gender == "")
-            //{
-            //    labErr.Text = "Gender must be chosen";
-            //}
-            //else
-            //{
-            //    foreach (Users i in listUsers)
-            //    {
-            //        if (i.Email.Equals(email))
-            //        {
-            //            labErr.Text = "Email must be unique";
-            //            return;
-            //        }
-            //    }
-            //    UserRepository.registUser(2, email, name, pass, gender, "Active");
-            //    Response.Redirect("Login.aspx");
-            //}
         }
 
         private Dictionary<String, String> extractRegInput()

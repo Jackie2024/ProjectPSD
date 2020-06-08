@@ -44,5 +44,13 @@ namespace ProjectPSD.Handler
             Users user = UserFactory.createUser(registerInputs);
             UserRepository.insertNewUser(user);
         }
+
+        public void updateUserProfile(int userId, Dictionary<String, String> updateInputs)
+        {
+            UserRepository.updateUsers(userId, updateInputs);
+            Session["email"] = updateInputs["email"];
+            Session["name"] = updateInputs["name"];
+            Session["gender"] = updateInputs["gender"];
+        }
     }
 }

@@ -45,6 +45,22 @@ namespace ProjectPSD.Controller
             return errMsg;
         }
 
+        public String registerNewMember(Dictionary<String, String> registerInputs)
+        {
+            String errMsg = validateRegistration(registerInputs);
+            if (errMsg == null) accountHdlr.createMember(registerInputs);
+
+            return errMsg;
+        }
+
+        public String updateUserProfile(int userId, Dictionary<String, String> updateInputs)
+        {
+            String errMsg = validateUpdateInput(updateInputs);
+            if (errMsg == null) accountHdlr.updateUserProfile(userId, updateInputs);
+
+            return errMsg;
+        }
+
         private String validateLoginInput(String email, String password)
         {
             String errMsg = null;
@@ -75,14 +91,6 @@ namespace ProjectPSD.Controller
             return errMsg;
         }
 
-        public String registerNewMember(Dictionary<String, String> registerInputs)
-        {
-            String errMsg = validateRegistration(registerInputs);
-            if (errMsg == null) accountHdlr.createMember(registerInputs);
-
-            return errMsg;
-        }
-
         private String validateRegistration(Dictionary<String, String> registerInputs)
         {
             String errMsg = null;
@@ -109,6 +117,26 @@ namespace ProjectPSD.Controller
             }
 
             return errMsg ?? validateEmailUniqueness(registerInputs["email"]);
+        }
+
+        private String validateUpdateInput(Dictionary<String, String> updateInputs)
+        {
+            String errMsg = null;
+
+            if (updateInputs["email"] == "")
+            {
+                errMsg = "Email must be filled";
+            }
+            else if (updateInputs["name"] == "")
+            {
+                errMsg = "Name must be filled";
+            }
+            else if (updateInputs["gender"] == "")
+            {
+                errMsg = "Gender must be chosen";
+            }
+
+            return errMsg ?? validateEmailUniqueness(updateInputs["email"]);
         }
 
         private String validateEmailUniqueness(String email)
