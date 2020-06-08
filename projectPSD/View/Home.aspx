@@ -25,6 +25,10 @@
             <br />
             <asp:Button ID="btnViewUser" runat="server" OnClick="btnViewUser_Click" Text="View User" />
             <br />
+            <asp:Button ID="btnViewPaymentType" runat="server" OnClick="btnViewPaymentType_Click" Text="View Payment Type" />
+            <br />
+            <asp:Button ID="btnInsertPaymentType" runat="server" OnClick="btnInsertPaymentType_Click" Text="Insert Payment Type" />
+            <br />
             <asp:Button ID="btnInsertProduct" runat="server" OnClick="btnInsertProduct_Click" Text="Insert Product" />
             <br />
             <asp:Button ID="btnViewProductType" runat="server" OnClick="btnViewProductType_Click" Text="View Product Type" />

@@ -14,6 +14,8 @@ namespace ProjectPSD.View
         {
             btnViewProfile.Visible = false;
             btnViewUser.Visible = false;
+            btnViewPaymentType.Visible = false;
+            btnInsertPaymentType.Visible = false;
             btnInsertProduct.Visible = false;
             btnViewProductType.Visible = false;
             btnInsertProductType.Visible = false;
@@ -34,6 +36,8 @@ namespace ProjectPSD.View
                 btnLogin.Visible = false;
                 btnViewProfile.Visible = true;
                 btnViewUser.Visible = true;
+                btnViewPaymentType.Visible = true;
+                btnInsertPaymentType.Visible = true;
                 btnInsertProduct.Visible = true;
                 btnViewProductType.Visible = true;
                 btnInsertProductType.Visible = true;
@@ -71,6 +75,16 @@ namespace ProjectPSD.View
         protected void btnViewUser_Click(object sender, EventArgs e)
         {
             Response.Redirect("ViewUser.aspx");
+        }
+
+        protected void btnViewPaymentType_Click(object sender, EventArgs e)
+        {
+            Response.Redirect("ViewPaymentType.aspx");
+        }
+
+        protected void btnInsertPaymentType_Click(object sender, EventArgs e)
+        {
+            Response.Redirect("InsertPaymentType.aspx");
         }
 
         protected void btnInsertProduct_Click(object sender, EventArgs e)

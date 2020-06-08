@@ -142,14 +142,17 @@
     <Content Include="View\AddCart.aspx" />
     <Content Include="View\ChangePassword.aspx" />
     <Content Include="View\Home.aspx" />
+    <Content Include="View\InsertPaymentType.aspx" />
     <Content Include="View\InsertProduct.aspx" />
     <Content Include="View\InsertProductType.aspx" />
     <Content Include="View\Login.aspx" />
     <Content Include="View\Register.aspx" />
+    <Content Include="View\UpdatePaymentType.aspx" />
     <Content Include="View\UpdateProduct.aspx" />
     <Content Include="View\UpdateProductType.aspx" />
     <Content Include="View\UpdateProfile.aspx" />
     <Content Include="View\ViewCart.aspx" />
+    <Content Include="View\ViewPaymentType.aspx" />
     <Content Include="View\ViewProduct.aspx" />
     <Content Include="View\ViewProductType.aspx" />
     <Content Include="View\ViewProfile.aspx" />
@@ -165,10 +168,13 @@
     <Compile Include="Controller\ProductController.cs" />
     <Compile Include="Controller\ProductTypeController.cs" />
     <Compile Include="Controller\TransactionController.cs" />
+    <Compile Include="Factory\PaymentTypeFactory.cs" />
     <Compile Include="Factory\ProductFactory.cs" />
     <Compile Include="Factory\ProductTypeFactory.cs" />
     <Compile Include="Factory\UserFactory.cs" />
-    <Compile Include="Handler\AccountHandler.cs" />
+    <Compile Include="Handler\AccountHandler.cs">
+      <SubType>ASPXCodeBehind</SubType>
+    </Compile>
     <Compile Include="Handler\CartHandler.cs" />
     <Compile Include="Handler\PaymentHandler.cs" />
     <Compile Include="Handler\ProductHandler.cs" />
@@ -214,6 +220,7 @@
       <DependentUpon>DatabaseEnt.tt</DependentUpon>
     </Compile>
     <Compile Include="Properties\AssemblyInfo.cs" />
+    <Compile Include="Repository\PaymentTypeRepository.cs" />
     <Compile Include="Repository\ProductRepository.cs" />
     <Compile Include="Repository\ProductTypeRepository.cs" />
     <Compile Include="Repository\TransactionRepository.cs" />
@@ -238,6 +245,13 @@
     </Compile>
     <Compile Include="View\Home.aspx.designer.cs">
       <DependentUpon>Home.aspx</DependentUpon>
+    </Compile>
+    <Compile Include="View\InsertPaymentType.aspx.cs">
+      <DependentUpon>InsertPaymentType.aspx</DependentUpon>
+      <SubType>ASPXCodeBehind</SubType>
+    </Compile>
+    <Compile Include="View\InsertPaymentType.aspx.designer.cs">
+      <DependentUpon>InsertPaymentType.aspx</DependentUpon>
     </Compile>
     <Compile Include="View\InsertProduct.aspx.cs">
       <DependentUpon>InsertProduct.aspx</DependentUpon>
@@ -267,6 +281,13 @@
     <Compile Include="View\Register.aspx.designer.cs">
       <DependentUpon>Register.aspx</DependentUpon>
     </Compile>
+    <Compile Include="View\UpdatePaymentType.aspx.cs">
+      <DependentUpon>UpdatePaymentType.aspx</DependentUpon>
+      <SubType>ASPXCodeBehind</SubType>
+    </Compile>
+    <Compile Include="View\UpdatePaymentType.aspx.designer.cs">
+      <DependentUpon>UpdatePaymentType.aspx</DependentUpon>
+    </Compile>
     <Compile Include="View\UpdateProduct.aspx.cs">
       <DependentUpon>UpdateProduct.aspx</DependentUpon>
       <SubType>ASPXCodeBehind</SubType>
@@ -294,6 +315,13 @@
     </Compile>
     <Compile Include="View\ViewCart.aspx.designer.cs">
       <DependentUpon>ViewCart.aspx</DependentUpon>
+    </Compile>
+    <Compile Include="View\ViewPaymentType.aspx.cs">
+      <DependentUpon>ViewPaymentType.aspx</DependentUpon>
+      <SubType>ASPXCodeBehind</SubType>
+    </Compile>
+    <Compile Include="View\ViewPaymentType.aspx.designer.cs">
+      <DependentUpon>ViewPaymentType.aspx</DependentUpon>
     </Compile>
     <Compile Include="View\ViewProduct.aspx.cs">
       <DependentUpon>ViewProduct.aspx</DependentUpon>
