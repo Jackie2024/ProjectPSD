@@ -23,7 +23,6 @@ namespace ProjectPSD.View
                 {
                     txtEmail.Text = Request.Cookies["email"].Value;
                     txtPass.Attributes["value"] = Request.Cookies["pass"].Value;
-                    cheRemember.Checked = true;
                 }
             }
         }
