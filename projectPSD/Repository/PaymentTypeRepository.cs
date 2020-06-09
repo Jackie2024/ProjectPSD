@@ -11,13 +11,21 @@ namespace ProjectPSD.Repository
     {
         private static DatabaseEnt db = new DatabaseEnt();
 
-        public static List<PaymentTypes> getPaymentTypes()
+        public List<PaymentTypes> getPaymentTypes()
         {
             return (from i in db.PaymentTypes
                     select i).ToList();
         }
 
-        public static void delPaymentTypes(int targetId)
+        public String getPaymentTypebyId(int targetId)
+        {
+            PaymentTypes p = (from i in db.PaymentTypes
+                              where i.ID == targetId
+                              select i).FirstOrDefault();
+            return p.Type;
+        }
+
+        public void delPaymentTypes(int targetId)
         {
             PaymentTypes p = (from i in db.PaymentTypes
                               where i.ID == targetId
@@ -27,7 +35,7 @@ namespace ProjectPSD.Repository
             db.SaveChanges();
         }
 
-        public static void updatePaymentTypes(int targetId, String paymentType)
+        public void updatePaymentTypes(int targetId, String paymentType)
         {
             PaymentTypes p = (from i in db.PaymentTypes
                               where i.ID == targetId
@@ -36,7 +44,7 @@ namespace ProjectPSD.Repository
             db.SaveChanges();
         }
 
-        public static void insertPaymentTypes(String paymentType)
+        public void insertPaymentTypes(String paymentType)
         {
             PaymentTypes p = PaymentTypeFactory.createPaymentType(paymentType);
 

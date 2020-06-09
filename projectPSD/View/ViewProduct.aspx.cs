@@ -1,5 +1,4 @@
-﻿using ProjectPSD.Model;
-using ProjectPSD.Repository;
+﻿using ProjectPSD.Controller;
 using System;
 using System.Collections.Generic;
 using System.Linq;
@@ -11,6 +10,7 @@ namespace ProjectPSD.View
 {
     public partial class ViewProduct : System.Web.UI.Page
     {
+        private ProductController productCtrl = new ProductController();
         protected void Page_Load(object sender, EventArgs e)
         {
 
@@ -18,7 +18,7 @@ namespace ProjectPSD.View
             if (Session["roleId"].Equals(1))
             {
                
-                gridProduct.DataSource = ProductRepository.print();
+                gridProduct.DataSource = productCtrl.print();
                 gridProduct.DataBind();
             }
             else
@@ -29,7 +29,7 @@ namespace ProjectPSD.View
                 btnUpdateProduct.Visible = false;
                 btnDeleteProduct.Visible = false;
 
-                gridProduct.DataSource = ProductRepository.printForMember();
+                gridProduct.DataSource = productCtrl.printForMember();
                 gridProduct.DataBind();
             }
         }
@@ -47,46 +47,17 @@ namespace ProjectPSD.View
         protected void btnUpdateProduct_Click(object sender, EventArgs e)
         {
             String productId = txtProductId.Text;
-            List<Products> listProducts = ProductRepository.getProducts();
+            String errMsg = productCtrl.gotoUpdateAttempt(productId);
 
-            if (productId == "")
-            {
-                labErr.Text = "Product ID must be filled";
-            }
-            else
-            {
-                foreach (Products i in listProducts)
-                {
-                    if (i.ID.Equals(int.Parse(txtProductId.Text)))
-                    {
-                        Response.Redirect("UpdateProduct.aspx?id=" + productId);
-                    }
-                }
-                labErr.Text = "Product ID must be exist";
-            }
+            if (errMsg != null) labErr.Text = errMsg;
         }
 
         protected void btnDeleteProduct_Click(object sender, EventArgs e)
         {
             String productId = txtProductId.Text;
-            List<Products> listProducts = ProductRepository.getProducts();
+            String errMsg = productCtrl.deleteAttempt(productId);
 
-            if (productId == "")
-            {
-                labErr.Text = "Product ID must be filled";
-            }
-            else
-            {
-                foreach (Products i in listProducts)
-                {
-                    if (i.ID.Equals(int.Parse(txtProductId.Text)))
-                    {
-                        ProductRepository.delProducts(i.ID);
-                        Response.Redirect("ViewProduct.aspx");
-                    }
-                }
-                labErr.Text = "Product ID must be exist";
-            }
+            if (errMsg != null) labErr.Text = errMsg;
         }
 
         protected void lbRedirect_Click (object sender, EventArgs e)

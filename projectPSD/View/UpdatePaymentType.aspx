@@ -9,6 +9,9 @@
 <body>
     <form id="form1" runat="server">
         <div>
+            Payment Type: <asp:Label ID="labType" runat="server" Text=""></asp:Label>
+            <br />
+            <br />
             Payment Type
             <br />
             <asp:TextBox ID="txtPaymentType" runat="server"></asp:TextBox>

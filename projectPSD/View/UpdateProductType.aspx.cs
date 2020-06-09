@@ -1,5 +1,4 @@
-﻿using ProjectPSD.Model;
-using ProjectPSD.Repository;
+﻿using ProjectPSD.Controller;
 using System;
 using System.Collections.Generic;
 using System.Linq;
@@ -11,11 +10,16 @@ namespace ProjectPSD.View
 {
     public partial class UpdateProductType : System.Web.UI.Page
     {
+        private ProductTypeController productTypeCtrl = new ProductTypeController();
         protected void Page_Load(object sender, EventArgs e)
         {
             int role = Int32.Parse(Session["roleId"].ToString());
             if (Session["name"] == null) { Response.Redirect("Login.aspx"); }
             else if (role == 2 || role == 3) { Response.Redirect("Home.aspx"); }
+
+            String targetProductId = Request.QueryString["id"];
+            labType.Text = productTypeCtrl.getProductTypebyId(targetProductId);
+            labDesc.Text = productTypeCtrl.getDescbyId(targetProductId);
         }
 
         protected void btnUpdateProductType_Click(object sender, EventArgs e)
@@ -23,33 +27,9 @@ namespace ProjectPSD.View
             String productType = txtProductType.Text;
             String desc = txtDescription.Text;
             String targetProductId = Request.QueryString["id"];
-            List<ProductTypes> listProductTypes = ProductTypeRepository.getProductTypes();
+            String errMsg = productTypeCtrl.updateAttempt(targetProductId, productType, desc);
 
-            if (productType == "")
-            {
-                labErr.Text = "Product type must be filled";
-            }
-            else if (productType.Length < 5)
-            {
-                labErr.Text = "Product type must consist of 5 characters or more";
-            }
-            else if (desc == "")
-            {
-                labErr.Text = "Description must be filled";
-            }
-            else
-            {
-                foreach (ProductTypes i in listProductTypes)
-                {
-                    if (i.Name.Equals(productType))
-                    {
-                        labErr.Text = "Product type must be unique";
-                        return;
-                    }
-                }
-                ProductTypeRepository.updateProductTypes(int.Parse(targetProductId), productType, desc);
-                Response.Redirect("ViewProductType.aspx");
-            }
+            if (errMsg != null) labErr.Text = errMsg;
         }
 
         protected void btnBack_Click(object sender, EventArgs e)

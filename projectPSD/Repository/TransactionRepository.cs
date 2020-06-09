@@ -67,7 +67,7 @@ namespace ProjectPSD.Repository
 
             int productId = detailTransaction.ProductID;
             int quantity = detailTransaction.Quantity;
-            ProductRepository.DecreaseStock(productId, quantity);
+            ProductRepository.decreaseStock(productId, quantity);
 
             return detailTransaction;
         }
