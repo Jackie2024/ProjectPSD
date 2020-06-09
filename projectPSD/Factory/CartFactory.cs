@@ -8,13 +8,12 @@ namespace ProjectPSD.Factory
 {
     public class CartFactory
     {
-        public static Carts Create(int quantity, int userID, int productID)
+        public static Carts Create(int quantity, Products product)
         {
             Carts cart = new Carts()
             {
-                UserID = userID,
                 Quantity = quantity,
-                ProductID = productID
+                Products = product
             };
             return cart;
         }

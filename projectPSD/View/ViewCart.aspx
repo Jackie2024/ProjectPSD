@@ -8,33 +8,27 @@
 </head>
 <body>
     <form id="form1" runat="server">
-        <asp:GridView ID="cartProduct" runat="server" Height="249px" Width="286px">
+        <asp:GridView ID="cartProduct" runat="server">
             <Columns>
-                <asp:TemplateField>
-                    <ItemTemplate>
-                        <asp:LinkButton OnClick="onUpdate_Click" ID="Update" CommandArgument='<%# Eval("Id")%>' runat="server">Update</asp:LinkButton>
-                    </ItemTemplate>
-                </asp:TemplateField>
-            </Columns>
-            <Columns>
-                <asp:TemplateField>
-                    <ItemTemplate>
-                        <asp:LinkButton OnClick="onDelete_Click" ID="Delete" CommandArgument='<%# Eval("Id")%>' runat="server">Delete</asp:LinkButton>
-                    </ItemTemplate>
-                </asp:TemplateField>
-            </Columns>
+                    <asp:TemplateField>
+                        <ItemTemplate>
+                            <asp:Button runat="server" ID="DeleteCart" CommandName="DeleteCart" OnClick="onDelete_Click" Text="Delete" />
+                        </ItemTemplate>
+                    </asp:TemplateField>
+                </Columns>
         </asp:GridView>
         <div class="card mb-3">                 
             <div class="card-body">                         
                 <h3>                            
                      <strong>                                 
-                         Grandtotal:  
+                         Grandtotal:&nbsp;
                      </strong>                        
+        <asp:Label ID="GrandTotal" runat="server" Text=""></asp:Label>                        
                 </h3>                    
             </div>                 
         </div> 
          <asp:Button CssClass="btn btn-primary w-100 mb-3" 
              ID="btnCheckout" Text="Checkout" OnClick="btnCheckout_Click" runat="server" />
-        <asp:Label ID="ErrorLabel" runat="server" Text=""></asp:Label></form>
+        </form>
 </body>
 </html>
