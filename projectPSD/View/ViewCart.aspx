@@ -15,6 +15,14 @@
                             <asp:Button runat="server" ID="DeleteCart" CommandName="DeleteCart" OnClick="onDelete_Click" Text="Delete" />
                         </ItemTemplate>
                     </asp:TemplateField>
+            </Columns>
+
+             <Columns>
+                    <asp:TemplateField>
+                        <ItemTemplate>
+                            <asp:Button runat="server" ID="UpdateCart" CommandName="UpdateCart" OnClick="onUpdate_Click" Text="Update" />
+                        </ItemTemplate>
+                    </asp:TemplateField>
                 </Columns>
         </asp:GridView>
         <div class="card mb-3">                 
@@ -27,8 +35,18 @@
                 </h3>                    
             </div>                 
         </div> 
+
+        <asp:RadioButtonList ID="paymentTypeID" runat="server" Height="16px" OnSelectedIndexChanged="RadioButtonList1_SelectedIndexChanged">
+            <asp:ListItem>Credit</asp:ListItem>
+            <asp:ListItem>Gopay</asp:ListItem>
+            <asp:ListItem>Ovo</asp:ListItem>
+         </asp:RadioButtonList>
+
+        <br />
          <asp:Button CssClass="btn btn-primary w-100 mb-3" 
              ID="btnCheckout" Text="Checkout" OnClick="btnCheckout_Click" runat="server" />
+        <br />
+        <asp:Label ID="errMsg" runat="server" Text=""></asp:Label>
         </form>
 </body>
 </html>

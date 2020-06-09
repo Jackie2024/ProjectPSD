@@ -17,7 +17,6 @@ namespace ProjectPSD.View
             if (Session["name"] == null) { Response.Redirect("Login.aspx"); }
             if (Session["roleId"].Equals(1))
             {
-               
                 gridProduct.DataSource = productCtrl.print();
                 gridProduct.DataBind();
             }

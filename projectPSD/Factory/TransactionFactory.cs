@@ -8,11 +8,12 @@ namespace ProjectPSD.Factory
 {
     public class TransactionFactory
     {
-        public static HeaderTransactions CreateHeader(int ID)
+        public static HeaderTransactions CreateHeader(int ID, int paymentTypeID)
         {
             return new HeaderTransactions()
             {
                 UserID = ID,
+                PaymentTypeID = paymentTypeID,
                 Date = DateTime.Now
             };
         }

@@ -57,12 +57,21 @@ namespace ProjectPSD.View
                 ErrorMessage.Text = "Stock must be less than or equals to current stock";
                 isError = true;
             }
-
+            int quantity = int.Parse(BoxStock.Text);
+            int userID = (int)Session["userId"];
             if (!isError)
-            {
-               
-                Carts cart = CartFactory.Create(int.Parse(BoxStock.Text), p);
-                CartRepository.insertCart(cart);
+            {   
+                Carts cart = CartFactory.Create(userID,quantity, p);
+                Carts checkCart = CartRepository.getItemData(id);
+                if (checkCart != null)
+                {
+                    CartRepository.updateCart(userID, id, quantity);
+                }
+                else
+                {
+                    CartRepository.insertCart(userID, quantity, p);
+                }
+                Response.Redirect("ViewCart.aspx");
             }
 
             /*if (Session["cart"] != null) {
@@ -81,8 +90,6 @@ namespace ProjectPSD.View
                 carts.Add(cart);
             }
             */
-            Response.Redirect("Home.aspx");
-
         }
 
         protected int toInt(String s)

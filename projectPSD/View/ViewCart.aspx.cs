@@ -29,6 +29,9 @@ namespace ProjectPSD.View
 
         protected void onUpdate_Click(object sender, EventArgs e)
         {
+            Button updateCart = (Button)sender;
+            GridViewRow selectedRow = (GridViewRow)updateCart.NamingContainer;
+            string cartsId = cartProduct.Rows[selectedRow.RowIndex].Cells[1].Text;
             int id = Int32.Parse((sender as LinkButton).CommandArgument);
             Response.Redirect("UpdateCart.aspx?id=" + id);
         }
@@ -40,21 +43,39 @@ namespace ProjectPSD.View
             string cartsId = cartProduct.Rows[selectedRow.RowIndex].Cells[1].Text;
             int cartId = toInt(cartsId);
             CartRepository.deleteCart(cartId);
-            //ProductRepository.deleteProduct(id);
-            //<%= ((double)carts.Sum(x => x.Product.price * x.Quantity)).ToString("C")
             Response.Redirect(Request.RawUrl);
         }
 
         protected void btnCheckout_Click(object sender, EventArgs e)
         {
             int userId = Convert.ToInt32(Session["userId"].ToString());
+            Carts checkout = CartRepository.getCartData((int)Session["userId"]);
+            String paymentType;
+            int paymentTypesID = paymentTypeID.SelectedIndex;
 
-            /*if (carts.Equals(null))
+            try
             {
-                ErrorLabel.Text = "Cart's empty";
-            }*/
-            TransactionController.CheckOut(userId, carts);
-            Response.Redirect("Home.aspx");
+                paymentType = paymentTypeID.SelectedItem.Value;
+            }
+            catch
+            {
+                paymentType = "";
+            }
+            if (checkout == null)
+            {
+                errMsg.Text = "Cannot Check out, the cart is empty";
+            }
+            else if (paymentTypeID.SelectedIndex < 0)
+            {
+                errMsg.Text = "Payment Type must be selected";
+            }
+            else
+            {
+                errMsg.Text = "PaymentTypeIndex: " + paymentTypesID;
+                paymentTypesID += 1;
+                /*TransactionController.CheckOut(userId, paymentTypesID, carts);
+                Response.Redirect("Home.aspx");*/
+            }
         }
 
         protected int toInt(String s)
@@ -65,6 +86,11 @@ namespace ProjectPSD.View
                 return (number);
             else
                 return (0);
+        }
+
+        protected void RadioButtonList1_SelectedIndexChanged(object sender, EventArgs e)
+        {
+            
         }
     }
 }

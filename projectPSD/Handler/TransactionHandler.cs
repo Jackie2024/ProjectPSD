@@ -10,9 +10,9 @@ namespace ProjectPSD.Handler
 {
     public class TransactionHandler
     {
-        public static void Checkout(int userId, List<Carts> carts)
+        public static void Checkout(int userId, int paymentTypeID, List<Carts> carts)
         {
-            HeaderTransactions headerTransaction = TransactionFactory.CreateHeader(userId);
+            HeaderTransactions headerTransaction = TransactionFactory.CreateHeader(userId, paymentTypeID);
             int headerTransactionId = TransactionRepository.InsertHeaderTransaction(headerTransaction).ID;
 
             foreach (var item in carts)
