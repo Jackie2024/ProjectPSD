@@ -18,6 +18,9 @@
         </asp:GridView>
 
         <asp:Button ID="btnBack" runat="server" OnClick="BtnBack_Click" Text="Back to Transaction History" />
+        <br />
+            <br />
+            <asp:Button ID = "btnHome" runat = "server" OnClick = "BtnHome_Click" Text = "Back to Home"/>
         
     </div>
     </form>

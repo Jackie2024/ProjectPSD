@@ -22,8 +22,11 @@
         <h5>
             <asp:Button ID="addToCart" runat="server" Text="Add to Cart" OnClick="addToCart_Click" />
         </h5>
-
         <asp:Label ID="ErrorMessage" runat="server" Text=""></asp:Label>
+
+        <br />
+            <br />
+            <asp:Button ID="btnHome" runat="server" OnClick="BtnHome_Click" Text="Back to Home" />
     </form>
 </body>
 </html>

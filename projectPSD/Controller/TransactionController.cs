@@ -9,9 +9,9 @@ namespace ProjectPSD.Controller
 {
     public class TransactionController
     {
-        public static void CheckOut(int userId, List<Carts> carts)
+        public static void CheckOut(int userId, int paymentTypeID, List<Carts> carts)
         {
-            TransactionHandler.Checkout(userId, carts);
+            TransactionHandler.Checkout(userId, paymentTypeID, carts);
         }
 
         public static List<Object> getTransactionDetails(int transactionId)

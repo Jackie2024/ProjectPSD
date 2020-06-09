@@ -20,11 +20,6 @@ namespace ProjectPSD.View
             gridPayment.DataBind();
         }
 
-        protected void btnBack_Click(object sender, EventArgs e)
-        {
-            Response.Redirect("Home.aspx");
-        }
-
         protected void btnInsertPaymentType_Click(object sender, EventArgs e)
         {
             Response.Redirect("InsertPaymentType.aspx");
@@ -44,6 +39,11 @@ namespace ProjectPSD.View
             String errMsg = paymentCtrl.deleteAttempt(paymentTypeId);
 
             if (errMsg != null) labErr.Text = errMsg;
+        }
+
+        protected void BtnHome_Click(object sender, EventArgs e)
+        {
+            Response.Redirect("Home.aspx");
         }
     }
 }

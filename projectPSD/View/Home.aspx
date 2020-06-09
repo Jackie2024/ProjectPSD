@@ -37,7 +37,11 @@
             <br />
             <asp:Button ID="btnLogout" runat="server" OnClick="BtnLogout_Click" Text="Logout" />
         </div>
-    
+        <br />
+        <br />
+        <asp:Label ID="Reccomendation" runat="server">RECOMMENDATION!</asp:Label>
+    <asp:GridView ID="gridProduct" runat="server" OnRowDataBound="gridProduct_RowDataBound" Height="249px" Width="286px">
+        </asp:GridView>
     </div>
     </form>
 </body>
