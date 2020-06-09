@@ -45,7 +45,7 @@ namespace ProjectPSD.Repository
 
         public static HeaderTransactions getHeaderTransactionById(int transactionId)
         {
-            return db.HeaderTransactions.Where(htr => htr.ID == transactionId).First();
+            return db.HeaderTransactions.Where(htr => htr.ID == transactionId).FirstOrDefault();
         }
 
         public static HeaderTransactions InsertHeaderTransaction(HeaderTransactions headerTransaction)

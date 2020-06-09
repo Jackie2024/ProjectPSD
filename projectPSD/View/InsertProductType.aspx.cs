@@ -30,5 +30,10 @@ namespace ProjectPSD.View
         {
             Response.Redirect("ViewProductType.aspx");
         }
+        
+        protected void BtnHome_Click(object sender, EventArgs e)
+        {
+            Response.Redirect("Home.aspx");
+        }
     }
 }

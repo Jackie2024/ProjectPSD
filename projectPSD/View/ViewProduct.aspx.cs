@@ -15,22 +15,16 @@ namespace ProjectPSD.View
         {
 
             if (Session["name"] == null) { Response.Redirect("Login.aspx"); }
-            if (Session["roleId"].Equals(1))
-            {
-                gridProduct.DataSource = productCtrl.print();
-                gridProduct.DataBind();
-            }
-            else
+            if (!Session["roleId"].Equals(1))
             {
                 txtProductId.Visible = false;
                 labPro.Visible = false;
                 btnInsertProduct.Visible = false;
                 btnUpdateProduct.Visible = false;
                 btnDeleteProduct.Visible = false;
-
-                gridProduct.DataSource = productCtrl.printForMember();
-                gridProduct.DataBind();
             }
+            gridProduct.DataSource = productCtrl.print();
+            gridProduct.DataBind();
         }
 
         protected void btnBack_Click(object sender, EventArgs e)

@@ -34,5 +34,10 @@ namespace ProjectPSD.View
         {
             Response.Redirect("ViewPaymentType.aspx");
         }
+
+        protected void BtnBack_Click(object sender, EventArgs e)
+        {
+            Response.Redirect("Home.aspx");
+        }
     }
 }

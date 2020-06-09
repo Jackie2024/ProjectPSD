@@ -39,7 +39,9 @@
             <br />
             <asp:Button ID="btnLogout" runat="server" OnClick="BtnLogout_Click" Text="Logout" />
         </div>
-    
+        <br />
+        <br />
+       
     </div>
     </form>
 </body>

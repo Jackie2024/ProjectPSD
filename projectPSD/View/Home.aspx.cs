@@ -125,7 +125,8 @@ namespace ProjectPSD.View
 
         protected void btnTransactionReport_Click(object sender, EventArgs e)
         {
-            Response.Redirect("ViewTransactionReport.aspx");
+            Response.Redirect("TransactionReport.aspx");
         }
+
     }
 }

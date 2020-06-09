@@ -38,10 +38,11 @@ namespace ProjectPSD.View
         protected void onDelete_Click(object sender, EventArgs e)
         {
             Button deleteCart = (Button)sender;
+            int userId = Convert.ToInt32(Session["userId"].ToString());
             GridViewRow selectedRow = (GridViewRow)deleteCart.NamingContainer;
             string cartsId = cartProduct.Rows[selectedRow.RowIndex].Cells[1].Text;
             int cartId = toInt(cartsId);
-            CartRepository.deleteCart(cartId);
+            CartRepository.deleteCart(userId,cartId);
             Response.Redirect(Request.RawUrl);
         }
 
@@ -74,9 +75,9 @@ namespace ProjectPSD.View
                 errMsg.Text = "PaymentTypeIndex: " + paymentTypesID;
                 paymentTypesID += 1;
                 TransactionController.CheckOut(userId, paymentTypesID, carts);
-                Response.Redirect(Request.RawUrl);
+                CartRepository.EmptyCart(userId);
+                Response.Redirect("Home.aspx");
             }
-            Session["cart"] = carts;
         }
 
         protected int toInt(String s)
@@ -91,7 +92,12 @@ namespace ProjectPSD.View
 
         protected void RadioButtonList1_SelectedIndexChanged(object sender, EventArgs e)
         {
-            
+
+        }
+
+        protected void BtnHome_Click(object sender, EventArgs e)
+        {
+            Response.Redirect("Home.aspx");
         }
     }
 }

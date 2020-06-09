@@ -19,7 +19,7 @@
             <asp:Button ID="btnDeletePaymentType" runat="server" OnClick="btnDeletePaymentType_Click" Text="Delete Payment Type" />
             <br />
             <br />
-            <asp:Button ID="btnBack" runat="server" OnClick="btnBack_Click" Text="Back to Home" />
+            <asp:Button ID = "btnHome" runat = "server" OnClick = "BtnHome_Click" Text = "Back to Home"/>
         </div>
     </form>
 </body>
