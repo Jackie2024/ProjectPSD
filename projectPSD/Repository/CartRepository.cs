@@ -37,9 +37,9 @@ namespace ProjectPSD.Repository
             return GrandTotal;
         }
 
-        public static void deleteCart(int cartId)
+        public static void deleteCart(int userId, int cartId)
         {
-            Carts c = db.Carts.Where(x => x.ProductID == cartId).FirstOrDefault();
+            Carts c = db.Carts.Where(x => x.ProductID == cartId && x.UserID == userId).FirstOrDefault();
 
             db.Carts.Remove(c);
             db.SaveChanges();
