@@ -44,6 +44,7 @@ namespace ProjectPSD.View
                 btnLogout.Visible = true;
                 btnViewCart.Visible = true;
                 btnTransactionHistory.Visible = true;
+                btnTransactionReport.Visible = true;
             }
             else
             {
@@ -122,5 +123,9 @@ namespace ProjectPSD.View
             Response.Redirect("ViewTransactionHistory.aspx");
         }
 
+        protected void btnTransactionReport_Click(object sender, EventArgs e)
+        {
+            Response.Redirect("ViewTransactionReport.aspx");
+        }
     }
 }

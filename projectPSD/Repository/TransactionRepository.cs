@@ -96,5 +96,10 @@ namespace ProjectPSD.Repository
                     .ToList();
             }
         }
+
+        public static List<HeaderTransactions> GetTransactions()
+        {
+            return db.HeaderTransactions.ToList();
+        }
     }
 }

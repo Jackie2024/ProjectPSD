@@ -23,6 +23,8 @@
             <br />
             <asp:Button ID="btnTransactionHistory" runat="server" OnClick="btnTransactionHistory_Click" Text="Transaction History" />
             <br />
+            <asp:Button ID="btnTransactionReport" runat="server" OnClick="btnTransactionReport_Click" Text="Transaction Report" Visible="False" />
+            <br />
             <asp:Button ID="btnViewUser" runat="server" OnClick="btnViewUser_Click" Text="View User" />
             <br />
             <asp:Button ID="btnViewPaymentType" runat="server" OnClick="btnViewPaymentType_Click" Text="View Payment Type" />

@@ -39,5 +39,10 @@ namespace ProjectPSD.Controller
             return TransactionHandler.getAllUserTransactions();
         }
 
+        public static List<HeaderTransactions> GetTransactions()
+        {
+            return TransactionHandler.GetTransactions();
+        }
+
     }
 }

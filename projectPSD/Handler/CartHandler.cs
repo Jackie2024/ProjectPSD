@@ -1,4 +1,5 @@
-﻿using ProjectPSD.Repository;
+﻿using ProjectPSD.Model;
+using ProjectPSD.Repository;
 using System;
 using System.Collections.Generic;
 using System.Linq;
@@ -16,6 +17,18 @@ namespace ProjectPSD.Handler
                 return GrandTotal = 0;
             }
             return GrandTotal = CartRepository.GrandTotal(userId);
+        }
+
+        public static List<Object> getProductDetails(int productID)
+        {
+            return ProductRepository.getProductByDetailsId(productID);
+        }
+
+        private ProductRepository productRepo = new ProductRepository();
+        public Products getProductById(int id)
+        {
+            
+            return productRepo.getProductById(id);
         }
     }
 }

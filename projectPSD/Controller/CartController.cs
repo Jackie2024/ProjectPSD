@@ -39,5 +39,11 @@ namespace ProjectPSD.Controller
         {
             return CartRepository.getCurrUserCarts(userId);
         }
+
+
+        public static List<Object> generateProductData(int productID)
+        {
+            return CartHandler.getProductDetails(productID);
+        }
     }
 }
