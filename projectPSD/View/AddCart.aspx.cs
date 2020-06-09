@@ -16,6 +16,8 @@ namespace ProjectPSD.View
         protected static Products product;
 
         private ProductController productCtrl = new ProductController();
+        private CartController cartCtrl = new CartController();
+
         protected void Page_Load(object sender, EventArgs e)
         {
             if (!Page.IsPostBack)
@@ -35,61 +37,30 @@ namespace ProjectPSD.View
             List<Carts> carts = new List<Carts>();
             int id = Int32.Parse(Request.QueryString["id"]);
             int stock = toInt(BoxStock.Text);
-            int myInt;
+            string stockString = BoxStock.Text;
             bool isError = false;
             Products p = productCtrl.getProductById(id);
 
-            string stockString = BoxStock.Text;
-            bool isNumerical = int.TryParse(stockString, out myInt);
+            String message = cartCtrl.validateCart(stock, stockString, p);
+            if (message != null) { ErrorMessage.Text = message; isError = true; }
 
-            if (!isNumerical)
-            {
-                ErrorMessage.Text = "Input must be numeric";
-                isError = true;
-            }
-            else if (stock < 1)
-            {
-                ErrorMessage.Text = "Stock Must be more than 0";
-                isError = true;
-            }
-            else if (stock > p.Stock)
-            {
-                ErrorMessage.Text = "Stock must be less than or equals to current stock";
-                isError = true;
-            }
-            int quantity = int.Parse(BoxStock.Text);
-            int userID = (int)Session["userId"];
             if (!isError)
-            {   
+            {
+                int quantity = int.Parse(BoxStock.Text);
+                int userID = (int)Session["userId"];
                 Carts cart = CartFactory.Create(userID,quantity, p);
-                Carts checkCart = CartRepository.getItemData(id);
+                Carts checkCart = CartRepository.getItemData(userID, id);
                 if (checkCart != null)
                 {
                     CartRepository.updateCart(userID, id, quantity);
                 }
                 else
                 {
+                    ErrorMessage.Text = "masuk sini";
                     CartRepository.insertCart(userID, quantity, p);
                 }
-                Response.Redirect("ViewCart.aspx");
+                //Response.Redirect("ViewCart.aspx");
             }
-
-            /*if (Session["cart"] != null) {
-                carts = (List<Carts>)Session["cart"];
-                foreach (Carts item in carts) {
-                    if (item.Products == product) {
-                        item.Quantity += int.Parse(BoxStock.Text);
-                        isExist = true;
-                        break;
-                    }
-                }
-            }
-
-            if (!isExist || Session["cart"] == null) {
-                Carts cart = CartFactory.Create(int.Parse(BoxStock.Text), product);
-                carts.Add(cart);
-            }
-            */
         }
 
         protected int toInt(String s)

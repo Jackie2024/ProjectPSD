@@ -10,6 +10,7 @@ namespace ProjectPSD.Repository
     public class CartRepository
     {
         private static DatabaseEnt db = new DatabaseEnt();
+
         public static void insertCart(int userId, int quantity, Products p)
         {
             Carts c = CartFactory.Create(userId, quantity, p);
@@ -32,10 +33,6 @@ namespace ProjectPSD.Repository
 
         public static double GrandTotal(int userId)
         {
-            if(getCartData(userId) == null)
-            {
-                return 0;
-            }
             double GrandTotal = db.Carts.Where(x => x.UserID == userId).Sum(x => x.Products.Price * x.Quantity);
             return GrandTotal;
         }
@@ -53,9 +50,9 @@ namespace ProjectPSD.Repository
             return db.Carts.Where(x => x.UserID == id).FirstOrDefault();
         }
 
-        public static Carts getItemData(int id)
+        public static Carts getItemData(int userId, int id)
         {
-            return db.Carts.Where(x => x.ProductID == id).FirstOrDefault();
+            return db.Carts.Where(x => x.ProductID == id && x.UserID == userId).FirstOrDefault();
         }
 
         public static void updateCart(int userId, int prodID, int quantity)

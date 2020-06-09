@@ -20,6 +20,7 @@ namespace ProjectPSD.Factory
 
         public static DetailTransactions CreateDetail(int headerTransactionId, Carts cart)
         {
+
             DetailTransactions detailTransaction = new DetailTransactions()
             {
                 TransactionID = headerTransactionId,

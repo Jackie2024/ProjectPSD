@@ -14,16 +14,15 @@ namespace ProjectPSD.View
 {
     public partial class ViewCart : System.Web.UI.Page
     {
-        protected static List<Carts> carts = new List<Carts>();
+        public static DatabaseEnt db = new DatabaseEnt();
         protected void Page_Load(object sender, EventArgs e)
         {
             if (!IsPostBack)
             {
                 if (Session["name"] == null) { Response.Redirect("Login.aspx"); }
-                carts = (List<Carts>)Session["cart"];
-                cartProduct.DataSource = CartRepository.getCurrUserCarts((int)Session["userId"]);
+                cartProduct.DataSource = CartController.getCurrUserCarts((int)Session["userId"]);
                 cartProduct.DataBind();
-                GrandTotal.Text = CartRepository.GrandTotal((int)Session["userId"]).ToString();
+                GrandTotal.Text = CartController.GrandTotal((int)Session["userId"]).ToString();
             }
         }
 
@@ -51,6 +50,7 @@ namespace ProjectPSD.View
             int userId = Convert.ToInt32(Session["userId"].ToString());
             Carts checkout = CartRepository.getCartData((int)Session["userId"]);
             String paymentType;
+            List<Carts> carts = db.Carts.Where(c => c.UserID == userId).ToList();
             int paymentTypesID = paymentTypeID.SelectedIndex;
 
             try
@@ -73,9 +73,10 @@ namespace ProjectPSD.View
             {
                 errMsg.Text = "PaymentTypeIndex: " + paymentTypesID;
                 paymentTypesID += 1;
-                /*TransactionController.CheckOut(userId, paymentTypesID, carts);
-                Response.Redirect("Home.aspx");*/
+                TransactionController.CheckOut(userId, paymentTypesID, carts);
+                Response.Redirect(Request.RawUrl);
             }
+            Session["cart"] = carts;
         }
 
         protected int toInt(String s)
