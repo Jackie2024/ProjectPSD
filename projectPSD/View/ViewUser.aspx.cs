@@ -76,23 +76,6 @@ namespace ProjectPSD.View
             {
                 Response.Redirect("ViewUser.aspx");
             }
-
-            //if (userId.Equals(0))
-            //{
-            //    labErr.Text = "User ID must be filled";
-            //}
-            //else
-            //{
-            //    if (userId.Equals(Session["userId"]))
-            //    {
-            //        labErr.Text = "Cannot change your own data";
-            //    }
-            //    else
-            //    {
-            //        UserRepository.toggleStatus(userId);
-            //        Response.Redirect("ViewUser.aspx");
-            //    }
-            //}
         }
 
         protected int toInt(String s)
