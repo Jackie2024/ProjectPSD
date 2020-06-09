@@ -178,9 +178,13 @@
       <SubType>ASPXCodeBehind</SubType>
     </Compile>
     <Compile Include="Handler\CartHandler.cs" />
-    <Compile Include="Handler\PaymentHandler.cs" />
+    <Compile Include="Handler\PaymentHandler.cs">
+      <SubType>ASPXCodeBehind</SubType>
+    </Compile>
     <Compile Include="Handler\ProductHandler.cs" />
-    <Compile Include="Handler\ProductTypeHandler.cs" />
+    <Compile Include="Handler\ProductTypeHandler.cs">
+      <SubType>ASPXCodeBehind</SubType>
+    </Compile>
     <Compile Include="Handler\TransactionHandler.cs" />
     <Compile Include="Model\Carts.cs">
       <DependentUpon>DatabaseEnt.tt</DependentUpon>
