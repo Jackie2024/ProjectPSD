@@ -40,7 +40,6 @@ namespace ProjectPSD.Repository
         public static void deleteCart(int userId, int cartId)
         {
             Carts c = db.Carts.Where(x => x.ProductID == cartId && x.UserID == userId).FirstOrDefault();
-
             db.Carts.Remove(c);
             db.SaveChanges();
         }
@@ -60,6 +59,15 @@ namespace ProjectPSD.Repository
             Carts cart = db.Carts.Where(C => C.UserID == userId && C.ProductID == prodID).FirstOrDefault();
             cart.Quantity += quantity;
 
+            db.SaveChanges();
+        }
+
+        public static void EmptyCart(int userId)
+        {
+            foreach (var cart in db.Carts.Where(c => c.UserID == userId))
+            {
+                db.Carts.Remove(cart);
+            }
             db.SaveChanges();
         }
     }

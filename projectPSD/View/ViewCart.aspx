@@ -50,6 +50,9 @@
             
         <asp:Label ID="errMsg" runat="server" Text=""></asp:Label>
         <br />
+        <br />
+            <br />
+            <asp:Button ID="btnHome" runat="server" OnClick="BtnHome_Click" Text="Back to Home" />
         </form>
 </body>
 </html>

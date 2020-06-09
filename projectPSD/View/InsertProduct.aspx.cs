@@ -35,7 +35,7 @@ namespace ProjectPSD.View
 
         protected void BtnHome_Click(object sender, EventArgs e)
         {
-            Response.Redirect("Home.axps");
+            Response.Redirect("Home.aspx");
         }
     }
 }

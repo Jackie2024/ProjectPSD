@@ -75,6 +75,7 @@ namespace ProjectPSD.View
                 errMsg.Text = "PaymentTypeIndex: " + paymentTypesID;
                 paymentTypesID += 1;
                 TransactionController.CheckOut(userId, paymentTypesID, carts);
+                CartRepository.EmptyCart(userId);
                 Response.Redirect("Home.aspx");
             }
         }

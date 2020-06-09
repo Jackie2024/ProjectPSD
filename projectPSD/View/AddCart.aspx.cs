@@ -56,10 +56,9 @@ namespace ProjectPSD.View
                 }
                 else
                 {
-                    ErrorMessage.Text = "masuk sini";
                     CartRepository.insertCart(userID, quantity, p);
                 }
-                //Response.Redirect("ViewCart.aspx");
+                Response.Redirect("ViewCart.aspx");
             }
         }
 
@@ -71,6 +70,11 @@ namespace ProjectPSD.View
                 return (number);
             else
                 return (0);
+        }
+
+        public void BtnHome_Click(object sender, EventArgs e)
+        {
+            Response.Redirect("Home.aspx");
         }
     }
 }
