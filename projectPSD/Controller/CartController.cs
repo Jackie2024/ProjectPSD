@@ -45,5 +45,27 @@ namespace ProjectPSD.Controller
         {
             return CartHandler.getProductDetails(productID);
         }
+
+        public static string updateValidation(int quantity, int stock, int id)
+        {
+            string errorMsg = "";
+            CartHandler cart = new CartHandler();
+            Products p = new Products();
+            p = CartHandler.getProductID(id);
+            if (quantity < 0)
+            {
+                errorMsg = "quantity cannot be less than 0";
+            }else if (quantity > stock)
+            {
+                errorMsg = "quantity cannot be more than stock";
+            }
+
+            return errorMsg;
+        }
+
+        public static Products getProductByID(int id)
+        {
+            return CartHandler.getProductID(id);
+        }
     }
 }

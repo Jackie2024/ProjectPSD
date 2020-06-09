@@ -1,4 +1,6 @@
 ﻿using ProjectPSD.Controller;
+using ProjectPSD.Model;
+using ProjectPSD.Repository;
 using System;
 using System.Collections.Generic;
 using System.Linq;
@@ -10,6 +12,7 @@ namespace ProjectPSD.View
 {
     public partial class UpdateCart : System.Web.UI.Page
     {
+        private int id;
         protected void Page_Load(object sender, EventArgs e)
         {
 
@@ -19,11 +22,12 @@ namespace ProjectPSD.View
             }
 
             String GetProductID = Request.QueryString["id"];
-
+            id = Convert.ToInt32(GetProductID); 
             productGdv.DataSource = CartController.generateProductData(Int32.Parse(GetProductID));
             productGdv.DataBind();
 
         }
+
 
         protected void BackViewCartBtn_Click(object sender, EventArgs e)
         {
@@ -33,7 +37,24 @@ namespace ProjectPSD.View
         protected void UpdateCartBtn_Click(object sender, EventArgs e)
         {
             int quantity = Int32.Parse(NewQuantityBox.Text);
+            Products p = new Products();
+            p = CartController.getProductByID(id);
+            int stock = p.Stock;
+            String Notvalid = CartController.updateValidation(quantity, stock, p.ID);
 
+            if (!Notvalid.Equals(""))
+            {
+                ErrorMsg.Text = Notvalid;
+            }else if(quantity == 0)
+            {
+                //
+
+            }else
+            {
+                int userId = Convert.ToInt32(Session["userId"].ToString());
+                CartRepository.updateCart(userId, p.ID, quantity);
+                Response.Redirect("ViewCart.aspx");
+            }
 
         }
     }

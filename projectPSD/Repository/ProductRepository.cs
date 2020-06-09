@@ -94,5 +94,10 @@ namespace ProjectPSD.Repository
             return db.Products.Where(p => p.ID == productID).ToList<Object>();
 
         }
+
+        public static Products getProductID(int id)
+        {
+            return db.Products.Where(p => p.ID == id).FirstOrDefault();
+        }
     }
 }

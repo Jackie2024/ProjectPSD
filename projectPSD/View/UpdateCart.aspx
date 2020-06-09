@@ -1,5 +1,4 @@
-﻿@@ -0,0 +1,31 @@
-<%@ Page Language="C#" AutoEventWireup="true" CodeBehind="UpdateCart.aspx.cs" Inherits="ProjectPSD.View.UpdateCart" %>
+﻿<%@ Page Language="C#" AutoEventWireup="true" CodeBehind="UpdateCart.aspx.cs" Inherits="ProjectPSD.View.UpdateCart" %>
 
 <!DOCTYPE html>
 
@@ -10,10 +9,8 @@
 <body>
     <form id="form1" runat="server">
     <div>
-
-        <asp:GridView ID="productGdv" runat="server">
+     <asp:GridView ID="productGdv" runat="server">
         </asp:GridView>
-        <br />
         <br />
         Quantity<br />
         <asp:TextBox ID="NewQuantityBox" runat="server"></asp:TextBox>
@@ -25,7 +22,6 @@
         <br />
         <asp:Button ID="BackViewCartBtn" runat="server" OnClick="BackViewCartBtn_Click" Text="Back to View Cart" />
         <br />
-
     </div>
     </form>
 </body>

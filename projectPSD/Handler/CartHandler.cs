@@ -30,5 +30,12 @@ namespace ProjectPSD.Handler
             
             return productRepo.getProductById(id);
         }
+
+        public static Products getProductID(int id)
+        {
+            return ProductRepository.getProductID(id);
+        }
+
+        
     }
 }

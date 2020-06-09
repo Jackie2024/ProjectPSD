@@ -12,6 +12,10 @@ namespace ProjectPSD.View
     {
         protected void Page_Load(object sender, EventArgs e)
         {
+            if (Session["name"] == null || Convert.ToInt32(Session["roleId"]) == 2)
+            {
+                Response.Redirect("Login.aspx");
+            }
             TransactionsReport newTR = new TransactionsReport();
             CrystalReportViewer1.ReportSource = newTR;
             newTR.SetDataSource(GenerateData(TransactionController.GetTransactions()));
@@ -22,6 +26,7 @@ namespace ProjectPSD.View
             DataSet1 newDataset = new DataSet1();
             var htTable = newDataset.HeaderTransactions;
             var dtTable = newDataset.DetailTransactions;
+
             
             foreach(var ht in transactionList)
             {
@@ -39,8 +44,11 @@ namespace ProjectPSD.View
                     detailTransactionRow["ProductName"] = dt.Products.Name;
                     detailTransactionRow["Quantity"] = dt.Quantity;
                     detailTransactionRow["Price"] = dt.Products.Price;
+                    
                     dtTable.Rows.Add(detailTransactionRow);
                 }
+                
+
             }
             return newDataset;
         }
