@@ -47,9 +47,7 @@
          <asp:Button CssClass="btn btn-primary w-100 mb-3" 
              ID="btnCheckout" Text="Checkout" OnClick="btnCheckout_Click" runat="server" />
         <br />
-            <br />
-            <asp:Button ID = "btnHome" runat = "server" OnClick = "BtnHome_Click" Text = "Back to Home"/>
-        <br />
+            
         <asp:Label ID="errMsg" runat="server" Text=""></asp:Label>
         <br />
         </form>

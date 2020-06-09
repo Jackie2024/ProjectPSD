@@ -1,4 +1,5 @@
-﻿using ProjectPSD.Repository;
+﻿using ProjectPSD.Controller;
+using ProjectPSD.Repository;
 using System;
 using System.Collections.Generic;
 using System.Linq;
@@ -10,6 +11,7 @@ namespace ProjectPSD.View
 {
     public partial class Home : System.Web.UI.Page
     {
+        private ProductController productCtrl = new ProductController();
         protected void Page_Load(object sender, EventArgs e)
         {
             btnViewProfile.Visible = false;
@@ -22,6 +24,7 @@ namespace ProjectPSD.View
             btnLogout.Visible = false;
             btnViewCart.Visible = false;
             btnTransactionHistory.Visible = false;
+
             if(Session["name"] == null)
             {
                 lblName.Text = "Welcome Guest";
@@ -29,6 +32,7 @@ namespace ProjectPSD.View
                 btnViewProfile.Visible = false;
                 btnLogout.Visible = false;
                 Session["roleId"] = 3;
+                Reccomendation.Visible = false;
             }
             else if (Session["roleId"].Equals(1))
             {
@@ -44,6 +48,7 @@ namespace ProjectPSD.View
                 btnLogout.Visible = true;
                 btnViewCart.Visible = true;
                 btnTransactionHistory.Visible = true;
+                Reccomendation.Visible = false;
             }
             else
             {
@@ -54,6 +59,8 @@ namespace ProjectPSD.View
                 btnLogout.Visible = true;
                 btnViewCart.Visible = true;
                 btnTransactionHistory.Visible = true;
+                gridProduct.DataSource = productCtrl.printForMember();
+                gridProduct.DataBind();
             }
         }
 
@@ -122,5 +129,9 @@ namespace ProjectPSD.View
             Response.Redirect("ViewTransactionHistory.aspx");
         }
 
+        protected void gridProduct_RowDataBound(object sender, GridViewRowEventArgs e)
+        {
+
+        }
     }
 }
