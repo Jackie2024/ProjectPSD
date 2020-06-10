@@ -30,9 +30,9 @@ namespace ProjectPSD.View
         {
             Button updateCart = (Button)sender;
             GridViewRow selectedRow = (GridViewRow)updateCart.NamingContainer;
-            string cartsId = cartProduct.Rows[selectedRow.RowIndex].Cells[1].Text;
-            int id = Int32.Parse((sender as LinkButton).CommandArgument);
-            Response.Redirect("UpdateCart.aspx?id=" + id);
+            string cartsId = cartProduct.Rows[selectedRow.RowIndex].Cells[2].Text;
+            int cartId = toInt(cartsId);
+            Response.Redirect("UpdateCart.aspx?id=" + cartsId);
         }
 
         protected void onDelete_Click(object sender, EventArgs e)
@@ -40,7 +40,7 @@ namespace ProjectPSD.View
             Button deleteCart = (Button)sender;
             int userId = Convert.ToInt32(Session["userId"].ToString());
             GridViewRow selectedRow = (GridViewRow)deleteCart.NamingContainer;
-            string cartsId = cartProduct.Rows[selectedRow.RowIndex].Cells[1].Text;
+            string cartsId = cartProduct.Rows[selectedRow.RowIndex].Cells[2].Text;
             int cartId = toInt(cartsId);
             CartRepository.deleteCart(userId,cartId);
             Response.Redirect(Request.RawUrl);

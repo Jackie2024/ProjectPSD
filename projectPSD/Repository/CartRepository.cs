@@ -62,6 +62,14 @@ namespace ProjectPSD.Repository
             db.SaveChanges();
         }
 
+        public static void updateCarts(int userId, int prodID, int quantity)
+        {
+            Carts cart = db.Carts.Where(C => C.UserID == userId && C.ProductID == prodID).FirstOrDefault();
+            cart.Quantity = quantity;
+
+            db.SaveChanges();
+        }
+
         public static void EmptyCart(int userId)
         {
             foreach (var cart in db.Carts.Where(c => c.UserID == userId))

@@ -237,3 +237,20 @@ D:\Binus\Semester 4\Pattern Software Design\ProjectPSD\projectPSD\bin\CrystalDec
 D:\Binus\Semester 4\Pattern Software Design\ProjectPSD\projectPSD\bin\CrystalDecisions.ReportAppServer.ObjectFactory.dll
 D:\Binus\Semester 4\Pattern Software Design\ProjectPSD\projectPSD\bin\CrystalDecisions.ReportAppServer.CommonControls.dll
 D:\Binus\Semester 4\Pattern Software Design\ProjectPSD\projectPSD\bin\stdole.dll
+D:\1\BUNIS\B.university\Semester 4\PSD\Lab\ProjectPSD\projectPSD\bin\CrystalDecisions.CrystalReports.Engine.dll
+D:\1\BUNIS\B.university\Semester 4\PSD\Lab\ProjectPSD\projectPSD\bin\CrystalDecisions.ReportSource.dll
+D:\1\BUNIS\B.university\Semester 4\PSD\Lab\ProjectPSD\projectPSD\bin\CrystalDecisions.Shared.dll
+D:\1\BUNIS\B.university\Semester 4\PSD\Lab\ProjectPSD\projectPSD\bin\CrystalDecisions.Web.dll
+D:\1\BUNIS\B.university\Semester 4\PSD\Lab\ProjectPSD\projectPSD\bin\CrystalDecisions.ReportAppServer.DataDefModel.dll
+D:\1\BUNIS\B.university\Semester 4\PSD\Lab\ProjectPSD\projectPSD\bin\CrystalDecisions.ReportAppServer.ClientDoc.dll
+D:\1\BUNIS\B.university\Semester 4\PSD\Lab\ProjectPSD\projectPSD\bin\CrystalDecisions.ReportAppServer.ReportDefModel.dll
+D:\1\BUNIS\B.university\Semester 4\PSD\Lab\ProjectPSD\projectPSD\bin\CrystalDecisions.ReportAppServer.Controllers.dll
+D:\1\BUNIS\B.university\Semester 4\PSD\Lab\ProjectPSD\projectPSD\bin\CrystalDecisions.ReportAppServer.CommLayer.dll
+D:\1\BUNIS\B.university\Semester 4\PSD\Lab\ProjectPSD\projectPSD\bin\CrystalDecisions.ReportAppServer.DataSetConversion.dll
+D:\1\BUNIS\B.university\Semester 4\PSD\Lab\ProjectPSD\projectPSD\bin\CrystalDecisions.ReportAppServer.Prompting.dll
+D:\1\BUNIS\B.university\Semester 4\PSD\Lab\ProjectPSD\projectPSD\bin\CrystalDecisions.ReportAppServer.XmlSerialize.dll
+D:\1\BUNIS\B.university\Semester 4\PSD\Lab\ProjectPSD\projectPSD\bin\CrystalDecisions.ReportAppServer.CubeDefModel.dll
+D:\1\BUNIS\B.university\Semester 4\PSD\Lab\ProjectPSD\projectPSD\bin\CrystalDecisions.ReportAppServer.CommonObjectModel.dll
+D:\1\BUNIS\B.university\Semester 4\PSD\Lab\ProjectPSD\projectPSD\bin\CrystalDecisions.ReportAppServer.ObjectFactory.dll
+D:\1\BUNIS\B.university\Semester 4\PSD\Lab\ProjectPSD\projectPSD\bin\CrystalDecisions.ReportAppServer.CommonControls.dll
+D:\1\BUNIS\B.university\Semester 4\PSD\Lab\ProjectPSD\projectPSD\bin\stdole.dll

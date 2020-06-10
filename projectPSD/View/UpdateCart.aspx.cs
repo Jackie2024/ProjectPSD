@@ -16,7 +16,7 @@ namespace ProjectPSD.View
         protected void Page_Load(object sender, EventArgs e)
         {
 
-            if (Session["name"] == null || Convert.ToInt32(Session["roleId"]) == 1)
+            if (Session["name"] == null)
             {
                 Response.Redirect("Login.aspx");
             }
@@ -28,8 +28,6 @@ namespace ProjectPSD.View
 
         }
 
-        private Products p = new Products();
-        p = CartController.getProductByID(id);
 
         protected void BackViewCartBtn_Click(object sender, EventArgs e)
         {
@@ -38,6 +36,8 @@ namespace ProjectPSD.View
 
         protected void UpdateCartBtn_Click(object sender, EventArgs e)
         {
+            Products p = new Products();
+            p = CartController.getProductByID(id);
             int quantity = Int32.Parse(NewQuantityBox.Text);
             
             
@@ -58,7 +58,7 @@ namespace ProjectPSD.View
             else
             {
                 int userId = Convert.ToInt32(Session["userId"].ToString());
-                CartRepository.updateCart(userId, p.ID, quantity);
+                CartRepository.updateCarts(userId, p.ID, quantity);
                 Response.Redirect("ViewCart.aspx");
             }
 
