@@ -43,7 +43,7 @@ namespace ProjectPSD.View
         public void onClickViewTransactionReportBtn(Object sender, EventArgs e)
         {
             //TODO Add redirect destination
-            Response.Redirect("");
+            Response.Redirect("TransactionReport.aspx");
         }
     }
 }

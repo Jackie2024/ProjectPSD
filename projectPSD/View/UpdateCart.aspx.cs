@@ -28,6 +28,8 @@ namespace ProjectPSD.View
 
         }
 
+        private Products p = new Products();
+        p = CartController.getProductByID(id);
 
         protected void BackViewCartBtn_Click(object sender, EventArgs e)
         {
@@ -37,8 +39,8 @@ namespace ProjectPSD.View
         protected void UpdateCartBtn_Click(object sender, EventArgs e)
         {
             int quantity = Int32.Parse(NewQuantityBox.Text);
-            Products p = new Products();
-            p = CartController.getProductByID(id);
+            
+            
             int stock = p.Stock;
             String Notvalid = CartController.updateValidation(quantity, stock, p.ID);
 
@@ -47,9 +49,13 @@ namespace ProjectPSD.View
                 ErrorMsg.Text = Notvalid;
             }else if(quantity == 0)
             {
-                //
+                //delete
+                int userId = Convert.ToInt32(Session["userId"].ToString());
+                CartRepository.deleteItem(userId, p.ID);
+                Response.Redirect("ViewCart.aspx");
 
-            }else
+            }
+            else
             {
                 int userId = Convert.ToInt32(Session["userId"].ToString());
                 CartRepository.updateCart(userId, p.ID, quantity);

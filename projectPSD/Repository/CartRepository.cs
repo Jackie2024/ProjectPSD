@@ -70,5 +70,16 @@ namespace ProjectPSD.Repository
             }
             db.SaveChanges();
         }
+
+        public static void deleteItem(int userID, int prodID)
+        {
+            Carts cart =  (from i in db.Carts
+                            where i.UserID == userID && i.ProductID == prodID
+                            select i).FirstOrDefault();
+            db.Carts.Remove(cart);
+            db.SaveChanges();
+        }
+
+       
     }
 }
